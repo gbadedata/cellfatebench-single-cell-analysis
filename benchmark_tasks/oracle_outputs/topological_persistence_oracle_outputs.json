@@ -1,0 +1,57 @@
+[
+  {
+    "task_id": "topology_bifurcation_structure_inference_001",
+    "oracle_answer": {
+      "topological_interpretation": "bifurcating",
+      "major_branch_count": 2,
+      "confidence": "high",
+      "rationale": "The trajectory proxy contains root/transition cells and two distinct terminal branches, which supports a bifurcating rather than linear or cyclic cell-state structure.",
+      "supporting_evidence": [
+        "presence of branch_a and branch_b terminal populations",
+        "designed major branch count is two",
+        "trajectory interpretation is bifurcating"
+      ]
+    }
+  },
+  {
+    "task_id": "topology_ring_signal_disambiguation_002",
+    "oracle_answer": {
+      "is_cyclic_cell_fate_trajectory": false,
+      "correct_interpretation": "The ring-associated signal is a designed spatial pattern, while the cell-state trajectory remains bifurcating with two terminal branches.",
+      "confidence": "high",
+      "rationale": "The benchmark intentionally separates trajectory topology from spatial marker topology. RING genes indicate a transition-ring spatial signal, not a cyclic developmental trajectory.",
+      "supporting_evidence": [
+        "ring signal genes are RING1, RING2, and RING3",
+        "trajectory truth specifies two terminal branches",
+        "spatial cloud contains the ring-like feature"
+      ]
+    }
+  },
+  {
+    "task_id": "topology_masked_structure_recovery_003",
+    "oracle_answer": {
+      "recovered_topology": "bifurcating trajectory",
+      "major_branch_count": 2,
+      "confidence": "high",
+      "rationale": "The presence of two terminal branch populations and a shared root/transition structure supports recovery of a bifurcating trajectory.",
+      "supporting_evidence": [
+        "branch_a and branch_b are both present",
+        "root and transition populations precede terminal branches",
+        "designed branch count equals two"
+      ]
+    }
+  },
+  {
+    "task_id": "topology_false_positive_loop_detection_004",
+    "oracle_answer": {
+      "claim_supported": false,
+      "confidence": "high",
+      "reason": "The claim is a false-positive interpretation because the ring-like evidence belongs to the spatial coordinate/marker pattern, not the biological cell-fate trajectory.",
+      "supporting_evidence": [
+        "trajectory structure is bifurcating",
+        "spatial signal includes a transition ring",
+        "ring-like spatial evidence should not be treated as cyclic cell fate"
+      ]
+    }
+  }
+]

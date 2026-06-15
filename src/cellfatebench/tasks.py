@@ -666,3 +666,265 @@ def generate_spatial_tasks(
         "hidden_answers": str(hidden_path),
         "oracle_outputs": str(oracle_path),
     }
+
+
+TOPOLOGY_TASK_FAMILY = "topological_persistence_reasoning"
+
+
+def _load_topology_summary(
+    topology_summary_path: str | Path = "results/tables/topology_summary.json",
+) -> dict[str, Any]:
+    return json.loads(Path(topology_summary_path).read_text())
+
+
+def generate_topology_tasks(
+    output_root: str | Path = "benchmark_tasks",
+) -> dict[str, str]:
+    """Generate topological-persistence public tasks, hidden answers, and oracle outputs."""
+
+    topology_summary = _load_topology_summary()
+
+    trajectory_summary = topology_summary["trajectory_proxy"]
+    spatial_summary = topology_summary["spatial_coordinate_cloud"]
+    designed_features = topology_summary["designed_topological_features"]
+
+    public_tasks: list[dict[str, Any]] = []
+    hidden_answers: list[dict[str, Any]] = []
+    oracle_outputs: list[dict[str, Any]] = []
+
+    task_1_id = "topology_bifurcation_structure_inference_001"
+    public_tasks.append(
+        {
+            "task_id": task_1_id,
+            "task_family": TOPOLOGY_TASK_FAMILY,
+            "difficulty": "medium",
+            "question": (
+                "Using the branch-count summary and trajectory persistence summary, infer "
+                "whether the cell-state structure is best described as linear, cyclic, or "
+                "bifurcating."
+            ),
+            "observable_data": {
+                "branch_count_summary": topology_summary["branch_count_summary"],
+                "trajectory_proxy_description": trajectory_summary["description"],
+                "trajectory_persistence_summary": trajectory_summary["persistence_summary"],
+            },
+            "answer_format": {
+                "topological_interpretation": "linear | cyclic | bifurcating",
+                "major_branch_count": "integer",
+                "supporting_evidence": "list",
+                "confidence": "low | medium | high",
+            },
+        }
+    )
+    hidden_answers.append(
+        {
+            "task_id": task_1_id,
+            "expected_topological_interpretation": "bifurcating",
+            "expected_major_branch_count": designed_features["major_branches"],
+            "required_evidence_terms": ["branch_a", "branch_b", "bifurcating", "two terminal"],
+        }
+    )
+    oracle_outputs.append(
+        {
+            "task_id": task_1_id,
+            "oracle_answer": {
+                "topological_interpretation": "bifurcating",
+                "major_branch_count": designed_features["major_branches"],
+                "confidence": "high",
+                "rationale": (
+                    "The trajectory proxy contains root/transition cells and two distinct "
+                    "terminal branches, which supports a bifurcating rather than linear or "
+                    "cyclic cell-state structure."
+                ),
+                "supporting_evidence": [
+                    "presence of branch_a and branch_b terminal populations",
+                    "designed major branch count is two",
+                    "trajectory interpretation is bifurcating",
+                ],
+            },
+        }
+    )
+
+    task_2_id = "topology_ring_signal_disambiguation_002"
+    public_tasks.append(
+        {
+            "task_id": task_2_id,
+            "task_family": TOPOLOGY_TASK_FAMILY,
+            "difficulty": "hard",
+            "question": (
+                "A solver observes a ring-associated signal in the benchmark. Determine "
+                "whether this should be interpreted as a cyclic cell-fate trajectory or as "
+                "a spatial marker-pattern feature. Explain the distinction."
+            ),
+            "observable_data": {
+                "spatial_coordinate_cloud": spatial_summary,
+                "trajectory_proxy": trajectory_summary,
+                "ring_signal_genes": designed_features["ring_signal_genes"],
+            },
+            "answer_format": {
+                "is_cyclic_cell_fate_trajectory": "true | false",
+                "correct_interpretation": "string",
+                "supporting_evidence": "list",
+                "confidence": "low | medium | high",
+            },
+        }
+    )
+    hidden_answers.append(
+        {
+            "task_id": task_2_id,
+            "expected_is_cyclic_cell_fate_trajectory": False,
+            "expected_interpretation": "ring signal is spatial-pattern evidence, not a cyclic cell-fate trajectory",
+            "required_evidence_terms": ["RING", "spatial", "not cyclic trajectory", "bifurcating"],
+        }
+    )
+    oracle_outputs.append(
+        {
+            "task_id": task_2_id,
+            "oracle_answer": {
+                "is_cyclic_cell_fate_trajectory": False,
+                "correct_interpretation": (
+                    "The ring-associated signal is a designed spatial pattern, while the "
+                    "cell-state trajectory remains bifurcating with two terminal branches."
+                ),
+                "confidence": "high",
+                "rationale": (
+                    "The benchmark intentionally separates trajectory topology from spatial "
+                    "marker topology. RING genes indicate a transition-ring spatial signal, "
+                    "not a cyclic developmental trajectory."
+                ),
+                "supporting_evidence": [
+                    "ring signal genes are RING1, RING2, and RING3",
+                    "trajectory truth specifies two terminal branches",
+                    "spatial cloud contains the ring-like feature",
+                ],
+            },
+        }
+    )
+
+    task_3_id = "topology_masked_structure_recovery_003"
+    public_tasks.append(
+        {
+            "task_id": task_3_id,
+            "task_family": TOPOLOGY_TASK_FAMILY,
+            "difficulty": "hard",
+            "question": (
+                "The expected major topology label has been masked. Recover the most likely "
+                "hidden topology using branch counts and persistence-derived summaries."
+            ),
+            "observable_data": {
+                "masked_expected_structure": "MASKED_TOPOLOGICAL_STRUCTURE",
+                "branch_count_summary": topology_summary["branch_count_summary"],
+                "state_count_summary": topology_summary["state_count_summary"],
+                "trajectory_persistence_summary": trajectory_summary["persistence_summary"],
+            },
+            "answer_format": {
+                "recovered_topology": "string",
+                "major_branch_count": "integer",
+                "supporting_evidence": "list",
+                "confidence": "low | medium | high",
+            },
+        }
+    )
+    hidden_answers.append(
+        {
+            "task_id": task_3_id,
+            "expected_recovered_topology": "bifurcating trajectory",
+            "expected_major_branch_count": designed_features["major_branches"],
+            "required_evidence_terms": ["two branches", "branch_a", "branch_b", "terminal"],
+        }
+    )
+    oracle_outputs.append(
+        {
+            "task_id": task_3_id,
+            "oracle_answer": {
+                "recovered_topology": "bifurcating trajectory",
+                "major_branch_count": designed_features["major_branches"],
+                "confidence": "high",
+                "rationale": (
+                    "The presence of two terminal branch populations and a shared root/"
+                    "transition structure supports recovery of a bifurcating trajectory."
+                ),
+                "supporting_evidence": [
+                    "branch_a and branch_b are both present",
+                    "root and transition populations precede terminal branches",
+                    "designed branch count equals two",
+                ],
+            },
+        }
+    )
+
+    task_4_id = "topology_false_positive_loop_detection_004"
+    public_tasks.append(
+        {
+            "task_id": task_4_id,
+            "task_family": TOPOLOGY_TASK_FAMILY,
+            "difficulty": "hard",
+            "question": (
+                "A solver claims that the biological trajectory is a loop because the spatial "
+                "coordinate cloud contains ring-like evidence. Evaluate whether this is a "
+                "valid conclusion or a false-positive topological interpretation."
+            ),
+            "observable_data": {
+                "solver_claim": "The biological cell-fate trajectory is cyclic.",
+                "spatial_coordinate_cloud": spatial_summary,
+                "trajectory_proxy": trajectory_summary,
+                "branch_count_summary": topology_summary["branch_count_summary"],
+            },
+            "answer_format": {
+                "claim_supported": "true | false",
+                "reason": "short explanation",
+                "supporting_evidence": "list",
+                "confidence": "low | medium | high",
+            },
+        }
+    )
+    hidden_answers.append(
+        {
+            "task_id": task_4_id,
+            "expected_claim_supported": False,
+            "expected_error_type": "confusing spatial topology with trajectory topology",
+            "required_evidence_terms": ["false-positive", "spatial", "trajectory", "bifurcating"],
+        }
+    )
+    oracle_outputs.append(
+        {
+            "task_id": task_4_id,
+            "oracle_answer": {
+                "claim_supported": False,
+                "confidence": "high",
+                "reason": (
+                    "The claim is a false-positive interpretation because the ring-like evidence "
+                    "belongs to the spatial coordinate/marker pattern, not the biological "
+                    "cell-fate trajectory."
+                ),
+                "supporting_evidence": [
+                    "trajectory structure is bifurcating",
+                    "spatial signal includes a transition ring",
+                    "ring-like spatial evidence should not be treated as cyclic cell fate",
+                ],
+            },
+        }
+    )
+
+    output_root = Path(output_root)
+    public_dir = output_root / "public"
+    hidden_dir = output_root / "hidden"
+    oracle_dir = output_root / "oracle_outputs"
+
+    public_dir.mkdir(parents=True, exist_ok=True)
+    hidden_dir.mkdir(parents=True, exist_ok=True)
+    oracle_dir.mkdir(parents=True, exist_ok=True)
+
+    public_path = public_dir / "topological_persistence_tasks.json"
+    hidden_path = hidden_dir / "topological_persistence_answers.json"
+    oracle_path = oracle_dir / "topological_persistence_oracle_outputs.json"
+
+    public_path.write_text(json.dumps(public_tasks, indent=2))
+    hidden_path.write_text(json.dumps(hidden_answers, indent=2))
+    oracle_path.write_text(json.dumps(oracle_outputs, indent=2))
+
+    return {
+        "public_tasks": str(public_path),
+        "hidden_answers": str(hidden_path),
+        "oracle_outputs": str(oracle_path),
+    }

@@ -1,0 +1,46 @@
+[
+  {
+    "task_id": "topology_bifurcation_structure_inference_001",
+    "expected_topological_interpretation": "bifurcating",
+    "expected_major_branch_count": 2,
+    "required_evidence_terms": [
+      "branch_a",
+      "branch_b",
+      "bifurcating",
+      "two terminal"
+    ]
+  },
+  {
+    "task_id": "topology_ring_signal_disambiguation_002",
+    "expected_is_cyclic_cell_fate_trajectory": false,
+    "expected_interpretation": "ring signal is spatial-pattern evidence, not a cyclic cell-fate trajectory",
+    "required_evidence_terms": [
+      "RING",
+      "spatial",
+      "not cyclic trajectory",
+      "bifurcating"
+    ]
+  },
+  {
+    "task_id": "topology_masked_structure_recovery_003",
+    "expected_recovered_topology": "bifurcating trajectory",
+    "expected_major_branch_count": 2,
+    "required_evidence_terms": [
+      "two branches",
+      "branch_a",
+      "branch_b",
+      "terminal"
+    ]
+  },
+  {
+    "task_id": "topology_false_positive_loop_detection_004",
+    "expected_claim_supported": false,
+    "expected_error_type": "confusing spatial topology with trajectory topology",
+    "required_evidence_terms": [
+      "false-positive",
+      "spatial",
+      "trajectory",
+      "bifurcating"
+    ]
+  }
+]

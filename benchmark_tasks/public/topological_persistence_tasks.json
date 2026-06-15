@@ -1,0 +1,248 @@
+[
+  {
+    "task_id": "topology_bifurcation_structure_inference_001",
+    "task_family": "topological_persistence_reasoning",
+    "difficulty": "medium",
+    "question": "Using the branch-count summary and trajectory persistence summary, infer whether the cell-state structure is best described as linear, cyclic, or bifurcating.",
+    "observable_data": {
+      "branch_count_summary": {
+        "branch_b": 240,
+        "branch_a": 240,
+        "root": 220,
+        "transition": 200
+      },
+      "trajectory_proxy_description": "2D proxy using true pseudotime and signed branch coordinate",
+      "trajectory_persistence_summary": {
+        "n_points_used": 300,
+        "h0_feature_count": 292,
+        "h1_feature_count": 0,
+        "top_h0_persistence": [
+          0.0303,
+          0.026,
+          0.0257,
+          0.0247,
+          0.024,
+          0.0238,
+          0.0225,
+          0.0219,
+          0.0217,
+          0.0213
+        ],
+        "top_h1_persistence": [],
+        "max_h0_persistence": 0.0303,
+        "max_h1_persistence": 0.0
+      }
+    },
+    "answer_format": {
+      "topological_interpretation": "linear | cyclic | bifurcating",
+      "major_branch_count": "integer",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "topology_ring_signal_disambiguation_002",
+    "task_family": "topological_persistence_reasoning",
+    "difficulty": "hard",
+    "question": "A solver observes a ring-associated signal in the benchmark. Determine whether this should be interpreted as a cyclic cell-fate trajectory or as a spatial marker-pattern feature. Explain the distinction.",
+    "observable_data": {
+      "spatial_coordinate_cloud": {
+        "description": "2D spatial coordinate cloud with designed left, terminal, and ring-like spatial signals",
+        "expected_interpretation": "spatial layout contains a transition-ring signal while cell-state trajectory remains bifurcating",
+        "persistence_summary": {
+          "n_points_used": 300,
+          "h0_feature_count": 299,
+          "h1_feature_count": 54,
+          "top_h0_persistence": [
+            0.856,
+            0.663,
+            0.2873,
+            0.2541,
+            0.2538,
+            0.2394,
+            0.2295,
+            0.2279,
+            0.2242,
+            0.2134
+          ],
+          "top_h1_persistence": [
+            0.2144,
+            0.0891,
+            0.0776,
+            0.0732,
+            0.0674,
+            0.0578,
+            0.0573,
+            0.0572,
+            0.05,
+            0.047
+          ],
+          "max_h0_persistence": 0.856,
+          "max_h1_persistence": 0.2144
+        }
+      },
+      "trajectory_proxy": {
+        "description": "2D proxy using true pseudotime and signed branch coordinate",
+        "expected_interpretation": "bifurcating trajectory with two terminal branches",
+        "persistence_summary": {
+          "n_points_used": 300,
+          "h0_feature_count": 292,
+          "h1_feature_count": 0,
+          "top_h0_persistence": [
+            0.0303,
+            0.026,
+            0.0257,
+            0.0247,
+            0.024,
+            0.0238,
+            0.0225,
+            0.0219,
+            0.0217,
+            0.0213
+          ],
+          "top_h1_persistence": [],
+          "max_h0_persistence": 0.0303,
+          "max_h1_persistence": 0.0
+        }
+      },
+      "ring_signal_genes": [
+        "RING1",
+        "RING2",
+        "RING3"
+      ]
+    },
+    "answer_format": {
+      "is_cyclic_cell_fate_trajectory": "true | false",
+      "correct_interpretation": "string",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "topology_masked_structure_recovery_003",
+    "task_family": "topological_persistence_reasoning",
+    "difficulty": "hard",
+    "question": "The expected major topology label has been masked. Recover the most likely hidden topology using branch counts and persistence-derived summaries.",
+    "observable_data": {
+      "masked_expected_structure": "MASKED_TOPOLOGICAL_STRUCTURE",
+      "branch_count_summary": {
+        "branch_b": 240,
+        "branch_a": 240,
+        "root": 220,
+        "transition": 200
+      },
+      "state_count_summary": {
+        "branch_b_terminal": 240,
+        "branch_a_terminal": 240,
+        "root_progenitor": 220,
+        "transition_state": 200
+      },
+      "trajectory_persistence_summary": {
+        "n_points_used": 300,
+        "h0_feature_count": 292,
+        "h1_feature_count": 0,
+        "top_h0_persistence": [
+          0.0303,
+          0.026,
+          0.0257,
+          0.0247,
+          0.024,
+          0.0238,
+          0.0225,
+          0.0219,
+          0.0217,
+          0.0213
+        ],
+        "top_h1_persistence": [],
+        "max_h0_persistence": 0.0303,
+        "max_h1_persistence": 0.0
+      }
+    },
+    "answer_format": {
+      "recovered_topology": "string",
+      "major_branch_count": "integer",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "topology_false_positive_loop_detection_004",
+    "task_family": "topological_persistence_reasoning",
+    "difficulty": "hard",
+    "question": "A solver claims that the biological trajectory is a loop because the spatial coordinate cloud contains ring-like evidence. Evaluate whether this is a valid conclusion or a false-positive topological interpretation.",
+    "observable_data": {
+      "solver_claim": "The biological cell-fate trajectory is cyclic.",
+      "spatial_coordinate_cloud": {
+        "description": "2D spatial coordinate cloud with designed left, terminal, and ring-like spatial signals",
+        "expected_interpretation": "spatial layout contains a transition-ring signal while cell-state trajectory remains bifurcating",
+        "persistence_summary": {
+          "n_points_used": 300,
+          "h0_feature_count": 299,
+          "h1_feature_count": 54,
+          "top_h0_persistence": [
+            0.856,
+            0.663,
+            0.2873,
+            0.2541,
+            0.2538,
+            0.2394,
+            0.2295,
+            0.2279,
+            0.2242,
+            0.2134
+          ],
+          "top_h1_persistence": [
+            0.2144,
+            0.0891,
+            0.0776,
+            0.0732,
+            0.0674,
+            0.0578,
+            0.0573,
+            0.0572,
+            0.05,
+            0.047
+          ],
+          "max_h0_persistence": 0.856,
+          "max_h1_persistence": 0.2144
+        }
+      },
+      "trajectory_proxy": {
+        "description": "2D proxy using true pseudotime and signed branch coordinate",
+        "expected_interpretation": "bifurcating trajectory with two terminal branches",
+        "persistence_summary": {
+          "n_points_used": 300,
+          "h0_feature_count": 292,
+          "h1_feature_count": 0,
+          "top_h0_persistence": [
+            0.0303,
+            0.026,
+            0.0257,
+            0.0247,
+            0.024,
+            0.0238,
+            0.0225,
+            0.0219,
+            0.0217,
+            0.0213
+          ],
+          "top_h1_persistence": [],
+          "max_h0_persistence": 0.0303,
+          "max_h1_persistence": 0.0
+        }
+      },
+      "branch_count_summary": {
+        "branch_b": 240,
+        "branch_a": 240,
+        "root": 220,
+        "transition": 200
+      }
+    },
+    "answer_format": {
+      "claim_supported": "true | false",
+      "reason": "short explanation",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  }
+]
