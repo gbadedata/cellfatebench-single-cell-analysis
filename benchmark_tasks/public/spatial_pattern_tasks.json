@@ -1,0 +1,653 @@
+[
+  {
+    "task_id": "spatial_variable_gene_identification_001",
+    "task_family": "spatial_pattern_reasoning",
+    "difficulty": "medium",
+    "question": "Using the spatial correlation summary, identify the strongest spatially patterned gene groups and explain what spatial signal they represent.",
+    "observable_data": {
+      "top_spatially_patterned_genes": [
+        {
+          "gene": "LEFT3",
+          "corr_x": -0.8825,
+          "corr_y": -0.0025,
+          "corr_radius": -0.2607,
+          "max_abs_spatial_correlation": 0.8825
+        },
+        {
+          "gene": "LEFT1",
+          "corr_x": -0.8796,
+          "corr_y": -0.0342,
+          "corr_radius": -0.2498,
+          "max_abs_spatial_correlation": 0.8796
+        },
+        {
+          "gene": "LEFT2",
+          "corr_x": -0.8722,
+          "corr_y": -0.0074,
+          "corr_radius": -0.2571,
+          "max_abs_spatial_correlation": 0.8722
+        },
+        {
+          "gene": "RIGHT1",
+          "corr_x": 0.8611,
+          "corr_y": -0.0111,
+          "corr_radius": 0.5258,
+          "max_abs_spatial_correlation": 0.8611
+        },
+        {
+          "gene": "RIGHT2",
+          "corr_x": 0.854,
+          "corr_y": -0.0142,
+          "corr_radius": 0.5271,
+          "max_abs_spatial_correlation": 0.854
+        },
+        {
+          "gene": "RIGHT3",
+          "corr_x": 0.8492,
+          "corr_y": -0.0081,
+          "corr_radius": 0.5263,
+          "max_abs_spatial_correlation": 0.8492
+        },
+        {
+          "gene": "ROOT4",
+          "corr_x": -0.7784,
+          "corr_y": 0.0097,
+          "corr_radius": -0.0605,
+          "max_abs_spatial_correlation": 0.7784
+        },
+        {
+          "gene": "ROOT3",
+          "corr_x": -0.771,
+          "corr_y": 0.0171,
+          "corr_radius": -0.0242,
+          "max_abs_spatial_correlation": 0.771
+        },
+        {
+          "gene": "ROOT2",
+          "corr_x": -0.7692,
+          "corr_y": 0.0022,
+          "corr_radius": -0.0384,
+          "max_abs_spatial_correlation": 0.7692
+        },
+        {
+          "gene": "ROOT1",
+          "corr_x": -0.7588,
+          "corr_y": -0.0008,
+          "corr_radius": -0.005,
+          "max_abs_spatial_correlation": 0.7588
+        },
+        {
+          "gene": "ROOT5",
+          "corr_x": -0.758,
+          "corr_y": 0.0066,
+          "corr_radius": -0.0383,
+          "max_abs_spatial_correlation": 0.758
+        },
+        {
+          "gene": "A_TERM2",
+          "corr_x": 0.4975,
+          "corr_y": 0.7308,
+          "corr_radius": 0.3276,
+          "max_abs_spatial_correlation": 0.7308
+        },
+        {
+          "gene": "A_TERM5",
+          "corr_x": 0.5079,
+          "corr_y": 0.7284,
+          "corr_radius": 0.3118,
+          "max_abs_spatial_correlation": 0.7284
+        },
+        {
+          "gene": "B_TERM2",
+          "corr_x": 0.5416,
+          "corr_y": -0.7279,
+          "corr_radius": 0.3704,
+          "max_abs_spatial_correlation": 0.7279
+        },
+        {
+          "gene": "A_TERM4",
+          "corr_x": 0.5069,
+          "corr_y": 0.724,
+          "corr_radius": 0.3252,
+          "max_abs_spatial_correlation": 0.724
+        }
+      ],
+      "correlation_axes": [
+        "spatial_x",
+        "spatial_y",
+        "transition_ring_radius"
+      ]
+    },
+    "answer_format": {
+      "spatial_gene_groups": "list of gene groups",
+      "spatial_interpretation": "short explanation",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "spatial_domain_marker_matching_002",
+    "task_family": "spatial_pattern_reasoning",
+    "difficulty": "medium",
+    "question": "Match each spatial domain to the most plausible marker-gene signal using the domain-level enrichment summary.",
+    "observable_data": {
+      "domain_expression_summary": {
+        "central_transition_region": {
+          "n_cells": 33,
+          "median_x": 0.953,
+          "median_y": -0.0155,
+          "top_enriched_genes": [
+            "TRANS2",
+            "TRANS3",
+            "TRANS4",
+            "TRANS1",
+            "TRANS5",
+            "CYCLE1",
+            "CYCLE2",
+            "CYCLE3"
+          ],
+          "top_enrichment_scores": {
+            "TRANS2": 1.1752,
+            "TRANS3": 1.1553,
+            "TRANS4": 1.0673,
+            "TRANS1": 1.0413,
+            "TRANS5": 1.0148,
+            "CYCLE1": 0.2456,
+            "CYCLE2": 0.1462,
+            "CYCLE3": 0.1435
+          }
+        },
+        "left_progenitor_region": {
+          "n_cells": 390,
+          "median_x": 0.232,
+          "median_y": 0.0076,
+          "top_enriched_genes": [
+            "LEFT3",
+            "LEFT2",
+            "LEFT1",
+            "ROOT3",
+            "ROOT5",
+            "ROOT4",
+            "ROOT2",
+            "ROOT1"
+          ],
+          "top_enrichment_scores": {
+            "LEFT3": 1.7358,
+            "LEFT2": 1.7158,
+            "LEFT1": 1.6864,
+            "ROOT3": 0.9864,
+            "ROOT5": 0.9825,
+            "ROOT4": 0.9742,
+            "ROOT2": 0.9702,
+            "ROOT1": 0.9624
+          }
+        },
+        "lower_terminal_region": {
+          "n_cells": 212,
+          "median_x": 2.7622,
+          "median_y": -1.1469,
+          "top_enriched_genes": [
+            "B_TERM2",
+            "B_TERM3",
+            "B_TERM1",
+            "B_TERM4",
+            "B_TERM5",
+            "RIGHT1",
+            "RIGHT3",
+            "RIGHT2"
+          ],
+          "top_enrichment_scores": {
+            "B_TERM2": 1.6838,
+            "B_TERM3": 1.6795,
+            "B_TERM1": 1.6553,
+            "B_TERM4": 1.6448,
+            "B_TERM5": 1.641,
+            "RIGHT1": 1.2062,
+            "RIGHT3": 1.2058,
+            "RIGHT2": 1.191
+          }
+        },
+        "transition_ring_region": {
+          "n_cells": 60,
+          "median_x": 2.0139,
+          "median_y": 0.6034,
+          "top_enriched_genes": [
+            "RING3",
+            "RING2",
+            "RING1",
+            "TRANS4",
+            "TRANS2",
+            "TRANS1",
+            "TRANS5",
+            "TRANS3"
+          ],
+          "top_enrichment_scores": {
+            "RING3": 1.286,
+            "RING2": 1.2577,
+            "RING1": 1.2172,
+            "TRANS4": 0.9411,
+            "TRANS2": 0.9216,
+            "TRANS1": 0.9093,
+            "TRANS5": 0.9056,
+            "TRANS3": 0.895
+          }
+        },
+        "upper_terminal_region": {
+          "n_cells": 205,
+          "median_x": 2.69,
+          "median_y": 1.1608,
+          "top_enriched_genes": [
+            "A_TERM4",
+            "A_TERM3",
+            "A_TERM2",
+            "A_TERM5",
+            "A_TERM1",
+            "RIGHT3",
+            "RIGHT2",
+            "RIGHT1"
+          ],
+          "top_enrichment_scores": {
+            "A_TERM4": 1.6902,
+            "A_TERM3": 1.6896,
+            "A_TERM2": 1.6824,
+            "A_TERM5": 1.6751,
+            "A_TERM1": 1.6466,
+            "RIGHT3": 1.203,
+            "RIGHT2": 1.1827,
+            "RIGHT1": 1.1726
+          }
+        }
+      }
+    },
+    "answer_format": {
+      "domain_to_marker_signal": "mapping from domain to marker signal",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "spatial_masked_domain_recovery_003",
+    "task_family": "spatial_pattern_reasoning",
+    "difficulty": "hard",
+    "question": "A spatial domain label has been masked. Recover the most likely hidden domain identity from coordinate summaries and enriched genes.",
+    "observable_data": {
+      "known_domains": {
+        "central_transition_region": {
+          "n_cells": 33,
+          "median_x": 0.953,
+          "median_y": -0.0155,
+          "top_enriched_genes": [
+            "TRANS2",
+            "TRANS3",
+            "TRANS4",
+            "TRANS1",
+            "TRANS5",
+            "CYCLE1",
+            "CYCLE2",
+            "CYCLE3"
+          ],
+          "top_enrichment_scores": {
+            "TRANS2": 1.1752,
+            "TRANS3": 1.1553,
+            "TRANS4": 1.0673,
+            "TRANS1": 1.0413,
+            "TRANS5": 1.0148,
+            "CYCLE1": 0.2456,
+            "CYCLE2": 0.1462,
+            "CYCLE3": 0.1435
+          }
+        },
+        "left_progenitor_region": {
+          "n_cells": 390,
+          "median_x": 0.232,
+          "median_y": 0.0076,
+          "top_enriched_genes": [
+            "LEFT3",
+            "LEFT2",
+            "LEFT1",
+            "ROOT3",
+            "ROOT5",
+            "ROOT4",
+            "ROOT2",
+            "ROOT1"
+          ],
+          "top_enrichment_scores": {
+            "LEFT3": 1.7358,
+            "LEFT2": 1.7158,
+            "LEFT1": 1.6864,
+            "ROOT3": 0.9864,
+            "ROOT5": 0.9825,
+            "ROOT4": 0.9742,
+            "ROOT2": 0.9702,
+            "ROOT1": 0.9624
+          }
+        },
+        "lower_terminal_region": {
+          "n_cells": 212,
+          "median_x": 2.7622,
+          "median_y": -1.1469,
+          "top_enriched_genes": [
+            "B_TERM2",
+            "B_TERM3",
+            "B_TERM1",
+            "B_TERM4",
+            "B_TERM5",
+            "RIGHT1",
+            "RIGHT3",
+            "RIGHT2"
+          ],
+          "top_enrichment_scores": {
+            "B_TERM2": 1.6838,
+            "B_TERM3": 1.6795,
+            "B_TERM1": 1.6553,
+            "B_TERM4": 1.6448,
+            "B_TERM5": 1.641,
+            "RIGHT1": 1.2062,
+            "RIGHT3": 1.2058,
+            "RIGHT2": 1.191
+          }
+        },
+        "upper_terminal_region": {
+          "n_cells": 205,
+          "median_x": 2.69,
+          "median_y": 1.1608,
+          "top_enriched_genes": [
+            "A_TERM4",
+            "A_TERM3",
+            "A_TERM2",
+            "A_TERM5",
+            "A_TERM1",
+            "RIGHT3",
+            "RIGHT2",
+            "RIGHT1"
+          ],
+          "top_enrichment_scores": {
+            "A_TERM4": 1.6902,
+            "A_TERM3": 1.6896,
+            "A_TERM2": 1.6824,
+            "A_TERM5": 1.6751,
+            "A_TERM1": 1.6466,
+            "RIGHT3": 1.203,
+            "RIGHT2": 1.1827,
+            "RIGHT1": 1.1726
+          }
+        }
+      },
+      "masked_domain": {
+        "domain_name": "MASKED_SPATIAL_DOMAIN",
+        "n_cells": 60,
+        "median_x": 2.0139,
+        "median_y": 0.6034,
+        "top_enriched_genes": [
+          "RING3",
+          "RING2",
+          "RING1",
+          "TRANS4",
+          "TRANS2",
+          "TRANS1",
+          "TRANS5",
+          "TRANS3"
+        ]
+      }
+    },
+    "answer_format": {
+      "recovered_domain": "string",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "spatial_false_positive_signal_detection_004",
+    "task_family": "spatial_pattern_reasoning",
+    "difficulty": "hard",
+    "question": "A solver claims that CYCLE genes define a stable spatial domain. Use the spatial summaries to evaluate whether this claim is supported or likely a false-positive interpretation.",
+    "observable_data": {
+      "claimed_spatial_gene_group": "cycling",
+      "cycle_genes": [
+        "CYCLE1",
+        "CYCLE2",
+        "CYCLE3",
+        "CYCLE4"
+      ],
+      "top_spatially_patterned_genes": [
+        {
+          "gene": "LEFT3",
+          "corr_x": -0.8825,
+          "corr_y": -0.0025,
+          "corr_radius": -0.2607,
+          "max_abs_spatial_correlation": 0.8825
+        },
+        {
+          "gene": "LEFT1",
+          "corr_x": -0.8796,
+          "corr_y": -0.0342,
+          "corr_radius": -0.2498,
+          "max_abs_spatial_correlation": 0.8796
+        },
+        {
+          "gene": "LEFT2",
+          "corr_x": -0.8722,
+          "corr_y": -0.0074,
+          "corr_radius": -0.2571,
+          "max_abs_spatial_correlation": 0.8722
+        },
+        {
+          "gene": "RIGHT1",
+          "corr_x": 0.8611,
+          "corr_y": -0.0111,
+          "corr_radius": 0.5258,
+          "max_abs_spatial_correlation": 0.8611
+        },
+        {
+          "gene": "RIGHT2",
+          "corr_x": 0.854,
+          "corr_y": -0.0142,
+          "corr_radius": 0.5271,
+          "max_abs_spatial_correlation": 0.854
+        },
+        {
+          "gene": "RIGHT3",
+          "corr_x": 0.8492,
+          "corr_y": -0.0081,
+          "corr_radius": 0.5263,
+          "max_abs_spatial_correlation": 0.8492
+        },
+        {
+          "gene": "ROOT4",
+          "corr_x": -0.7784,
+          "corr_y": 0.0097,
+          "corr_radius": -0.0605,
+          "max_abs_spatial_correlation": 0.7784
+        },
+        {
+          "gene": "ROOT3",
+          "corr_x": -0.771,
+          "corr_y": 0.0171,
+          "corr_radius": -0.0242,
+          "max_abs_spatial_correlation": 0.771
+        },
+        {
+          "gene": "ROOT2",
+          "corr_x": -0.7692,
+          "corr_y": 0.0022,
+          "corr_radius": -0.0384,
+          "max_abs_spatial_correlation": 0.7692
+        },
+        {
+          "gene": "ROOT1",
+          "corr_x": -0.7588,
+          "corr_y": -0.0008,
+          "corr_radius": -0.005,
+          "max_abs_spatial_correlation": 0.7588
+        },
+        {
+          "gene": "ROOT5",
+          "corr_x": -0.758,
+          "corr_y": 0.0066,
+          "corr_radius": -0.0383,
+          "max_abs_spatial_correlation": 0.758
+        },
+        {
+          "gene": "A_TERM2",
+          "corr_x": 0.4975,
+          "corr_y": 0.7308,
+          "corr_radius": 0.3276,
+          "max_abs_spatial_correlation": 0.7308
+        },
+        {
+          "gene": "A_TERM5",
+          "corr_x": 0.5079,
+          "corr_y": 0.7284,
+          "corr_radius": 0.3118,
+          "max_abs_spatial_correlation": 0.7284
+        },
+        {
+          "gene": "B_TERM2",
+          "corr_x": 0.5416,
+          "corr_y": -0.7279,
+          "corr_radius": 0.3704,
+          "max_abs_spatial_correlation": 0.7279
+        },
+        {
+          "gene": "A_TERM4",
+          "corr_x": 0.5069,
+          "corr_y": 0.724,
+          "corr_radius": 0.3252,
+          "max_abs_spatial_correlation": 0.724
+        }
+      ],
+      "domain_expression_summary": {
+        "central_transition_region": {
+          "n_cells": 33,
+          "median_x": 0.953,
+          "median_y": -0.0155,
+          "top_enriched_genes": [
+            "TRANS2",
+            "TRANS3",
+            "TRANS4",
+            "TRANS1",
+            "TRANS5",
+            "CYCLE1",
+            "CYCLE2",
+            "CYCLE3"
+          ],
+          "top_enrichment_scores": {
+            "TRANS2": 1.1752,
+            "TRANS3": 1.1553,
+            "TRANS4": 1.0673,
+            "TRANS1": 1.0413,
+            "TRANS5": 1.0148,
+            "CYCLE1": 0.2456,
+            "CYCLE2": 0.1462,
+            "CYCLE3": 0.1435
+          }
+        },
+        "left_progenitor_region": {
+          "n_cells": 390,
+          "median_x": 0.232,
+          "median_y": 0.0076,
+          "top_enriched_genes": [
+            "LEFT3",
+            "LEFT2",
+            "LEFT1",
+            "ROOT3",
+            "ROOT5",
+            "ROOT4",
+            "ROOT2",
+            "ROOT1"
+          ],
+          "top_enrichment_scores": {
+            "LEFT3": 1.7358,
+            "LEFT2": 1.7158,
+            "LEFT1": 1.6864,
+            "ROOT3": 0.9864,
+            "ROOT5": 0.9825,
+            "ROOT4": 0.9742,
+            "ROOT2": 0.9702,
+            "ROOT1": 0.9624
+          }
+        },
+        "lower_terminal_region": {
+          "n_cells": 212,
+          "median_x": 2.7622,
+          "median_y": -1.1469,
+          "top_enriched_genes": [
+            "B_TERM2",
+            "B_TERM3",
+            "B_TERM1",
+            "B_TERM4",
+            "B_TERM5",
+            "RIGHT1",
+            "RIGHT3",
+            "RIGHT2"
+          ],
+          "top_enrichment_scores": {
+            "B_TERM2": 1.6838,
+            "B_TERM3": 1.6795,
+            "B_TERM1": 1.6553,
+            "B_TERM4": 1.6448,
+            "B_TERM5": 1.641,
+            "RIGHT1": 1.2062,
+            "RIGHT3": 1.2058,
+            "RIGHT2": 1.191
+          }
+        },
+        "transition_ring_region": {
+          "n_cells": 60,
+          "median_x": 2.0139,
+          "median_y": 0.6034,
+          "top_enriched_genes": [
+            "RING3",
+            "RING2",
+            "RING1",
+            "TRANS4",
+            "TRANS2",
+            "TRANS1",
+            "TRANS5",
+            "TRANS3"
+          ],
+          "top_enrichment_scores": {
+            "RING3": 1.286,
+            "RING2": 1.2577,
+            "RING1": 1.2172,
+            "TRANS4": 0.9411,
+            "TRANS2": 0.9216,
+            "TRANS1": 0.9093,
+            "TRANS5": 0.9056,
+            "TRANS3": 0.895
+          }
+        },
+        "upper_terminal_region": {
+          "n_cells": 205,
+          "median_x": 2.69,
+          "median_y": 1.1608,
+          "top_enriched_genes": [
+            "A_TERM4",
+            "A_TERM3",
+            "A_TERM2",
+            "A_TERM5",
+            "A_TERM1",
+            "RIGHT3",
+            "RIGHT2",
+            "RIGHT1"
+          ],
+          "top_enrichment_scores": {
+            "A_TERM4": 1.6902,
+            "A_TERM3": 1.6896,
+            "A_TERM2": 1.6824,
+            "A_TERM5": 1.6751,
+            "A_TERM1": 1.6466,
+            "RIGHT3": 1.203,
+            "RIGHT2": 1.1827,
+            "RIGHT1": 1.1726
+          }
+        }
+      }
+    },
+    "answer_format": {
+      "claim_supported": "true | false",
+      "reason": "short explanation",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  }
+]

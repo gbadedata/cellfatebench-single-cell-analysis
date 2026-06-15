@@ -1,0 +1,56 @@
+[
+  {
+    "task_id": "spatial_variable_gene_identification_001",
+    "expected_spatial_gene_groups": [
+      "spatial_domain_left",
+      "spatial_domain_right",
+      "spatial_ring"
+    ],
+    "required_gene_prefixes": [
+      "LEFT",
+      "RIGHT",
+      "RING"
+    ],
+    "required_evidence_terms": [
+      "spatial",
+      "correlation",
+      "domain"
+    ]
+  },
+  {
+    "task_id": "spatial_domain_marker_matching_002",
+    "expected_domain_signals": {
+      "left_progenitor_region": "LEFT marker signal",
+      "upper_terminal_region": "RIGHT marker signal with upper terminal coordinates",
+      "lower_terminal_region": "RIGHT marker signal with lower terminal coordinates",
+      "transition_ring_region": "RING marker signal"
+    },
+    "required_gene_prefixes": [
+      "LEFT",
+      "RIGHT",
+      "RING"
+    ]
+  },
+  {
+    "task_id": "spatial_masked_domain_recovery_003",
+    "expected_recovered_domain": "transition_ring_region",
+    "required_gene_prefixes": [
+      "RING"
+    ],
+    "required_evidence_terms": [
+      "ring",
+      "transition",
+      "spatial"
+    ]
+  },
+  {
+    "task_id": "spatial_false_positive_signal_detection_004",
+    "expected_claim_supported": false,
+    "expected_interpretation": "CYCLE genes vary with pseudotime-like oscillatory signal rather than defining a stable spatial domain.",
+    "required_evidence_terms": [
+      "false-positive",
+      "cycle",
+      "not stable spatial domain"
+    ]
+  }
+]

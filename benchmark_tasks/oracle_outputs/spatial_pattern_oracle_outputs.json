@@ -1,0 +1,63 @@
+[
+  {
+    "task_id": "spatial_variable_gene_identification_001",
+    "oracle_answer": {
+      "spatial_gene_groups": [
+        "spatial_domain_left",
+        "spatial_domain_right",
+        "spatial_ring"
+      ],
+      "confidence": "high",
+      "rationale": "LEFT, RIGHT, and RING marker groups show the strongest association with spatial coordinates or transition-ring radius, indicating designed spatially patterned gene programs.",
+      "supporting_evidence": [
+        "LEFT genes are enriched in the left progenitor region",
+        "RIGHT genes are enriched toward terminal regions",
+        "RING genes track the transition ring region"
+      ]
+    }
+  },
+  {
+    "task_id": "spatial_domain_marker_matching_002",
+    "oracle_answer": {
+      "domain_to_marker_signal": {
+        "left_progenitor_region": "LEFT marker signal",
+        "upper_terminal_region": "RIGHT marker signal",
+        "lower_terminal_region": "RIGHT marker signal",
+        "transition_ring_region": "RING marker signal"
+      },
+      "confidence": "high",
+      "rationale": "Domain-level enrichment separates left progenitor, terminal, and ring regions through designed spatial marker groups.",
+      "supporting_evidence": [
+        "LEFT genes are most enriched in the left spatial region",
+        "RIGHT genes mark terminal x-coordinate regions",
+        "RING genes mark the transition-ring region"
+      ]
+    }
+  },
+  {
+    "task_id": "spatial_masked_domain_recovery_003",
+    "oracle_answer": {
+      "recovered_domain": "transition_ring_region",
+      "confidence": "high",
+      "rationale": "The masked domain is enriched for RING markers and has coordinates consistent with the transition-ring spatial region.",
+      "supporting_evidence": [
+        "RING marker enrichment",
+        "intermediate spatial position",
+        "matches designed transition-ring spatial signal"
+      ]
+    }
+  },
+  {
+    "task_id": "spatial_false_positive_signal_detection_004",
+    "oracle_answer": {
+      "claim_supported": false,
+      "confidence": "medium",
+      "rationale": "CYCLE genes were designed as oscillatory state/pseudotime-associated signals. They should not be interpreted as defining a stable spatial domain unless domain-level enrichment supports that claim.",
+      "supporting_evidence": [
+        "CYCLE genes are not the designed spatial gene groups",
+        "designed spatial groups are LEFT, RIGHT, and RING",
+        "domain interpretation should prioritise coordinate-linked enrichment"
+      ]
+    }
+  }
+]
