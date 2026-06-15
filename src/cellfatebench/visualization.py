@@ -103,7 +103,7 @@ def save_pseudotime_by_branch(
     ]
 
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.boxplot(values, labels=branch_order)
+    ax.boxplot(values, tick_labels=branch_order)
     ax.set_title("Pseudotime Distribution by Designed Branch")
     ax.set_xlabel("Designed branch")
     ax.set_ylabel("true_pseudotime")
