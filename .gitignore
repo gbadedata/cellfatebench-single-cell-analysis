@@ -27,3 +27,6 @@ results/tmp/
 data/cache/
 .coverage
 htmlcov/
+
+# Private notes and personal defence files
+private/
