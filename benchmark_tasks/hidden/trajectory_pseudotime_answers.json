@@ -1,0 +1,67 @@
+[
+  {
+    "task_id": "trajectory_root_state_inference_001",
+    "expected_root_state": "root_progenitor",
+    "acceptable_aliases": [
+      "root_progenitor",
+      "progenitor",
+      "root"
+    ],
+    "required_evidence_terms": [
+      "lowest pseudotime",
+      "ROOT",
+      "early"
+    ]
+  },
+  {
+    "task_id": "trajectory_terminal_state_inference_002",
+    "expected_terminal_states": [
+      "branch_a_terminal",
+      "branch_b_terminal"
+    ],
+    "acceptable_aliases": {
+      "branch_a_terminal": [
+        "branch_a_terminal",
+        "A terminal",
+        "branch A"
+      ],
+      "branch_b_terminal": [
+        "branch_b_terminal",
+        "B terminal",
+        "branch B"
+      ]
+    },
+    "required_evidence_terms": [
+      "highest pseudotime",
+      "A_TERM",
+      "B_TERM",
+      "terminal"
+    ]
+  },
+  {
+    "task_id": "trajectory_transition_state_ordering_003",
+    "expected_order": [
+      "root_progenitor",
+      "transition_state",
+      [
+        "branch_a_terminal",
+        "branch_b_terminal"
+      ]
+    ],
+    "expected_transition_state": "transition_state",
+    "required_evidence_terms": [
+      "intermediate pseudotime",
+      "TRANS",
+      "between root and terminal"
+    ]
+  },
+  {
+    "task_id": "trajectory_masked_terminal_recovery_004",
+    "expected_recovered_state": "branch_b_terminal",
+    "required_evidence_terms": [
+      "B_TERM",
+      "late pseudotime",
+      "terminal"
+    ]
+  }
+]

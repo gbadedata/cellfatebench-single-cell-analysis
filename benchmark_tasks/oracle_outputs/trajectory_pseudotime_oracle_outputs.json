@@ -1,0 +1,65 @@
+[
+  {
+    "task_id": "trajectory_root_state_inference_001",
+    "oracle_answer": {
+      "root_state": "root_progenitor",
+      "confidence": "high",
+      "rationale": "The root_progenitor state has the earliest pseudotime range and is enriched for ROOT marker genes, making it the most plausible starting state of the trajectory.",
+      "supporting_evidence": [
+        "lowest median pseudotime among states",
+        "enrichment of ROOT marker genes",
+        "position before transition and terminal states"
+      ]
+    }
+  },
+  {
+    "task_id": "trajectory_terminal_state_inference_002",
+    "oracle_answer": {
+      "terminal_states": [
+        "branch_a_terminal",
+        "branch_b_terminal"
+      ],
+      "confidence": "high",
+      "rationale": "branch_a_terminal and branch_b_terminal occupy late pseudotime ranges and show distinct terminal marker programs, indicating two terminal branches in the trajectory.",
+      "supporting_evidence": [
+        "late pseudotime ranges",
+        "branch-specific A_TERM markers",
+        "branch-specific B_TERM markers",
+        "bifurcating trajectory structure"
+      ]
+    }
+  },
+  {
+    "task_id": "trajectory_transition_state_ordering_003",
+    "oracle_answer": {
+      "early_to_late_order": [
+        "root_progenitor",
+        "transition_state",
+        [
+          "branch_a_terminal",
+          "branch_b_terminal"
+        ]
+      ],
+      "branching_interpretation": "The trajectory starts at root_progenitor, passes through an intermediate transition_state, and then bifurcates into branch_a_terminal and branch_b_terminal.",
+      "confidence": "high",
+      "supporting_evidence": [
+        "root state has earliest pseudotime",
+        "transition state has intermediate pseudotime and TRANS markers",
+        "terminal states have late pseudotime and branch-specific markers"
+      ]
+    }
+  },
+  {
+    "task_id": "trajectory_masked_terminal_recovery_004",
+    "oracle_answer": {
+      "recovered_state": "branch_b_terminal",
+      "confidence": "high",
+      "rationale": "The masked state has late pseudotime and is enriched for B_TERM marker genes, indicating that it corresponds to branch_b_terminal.",
+      "supporting_evidence": [
+        "late pseudotime range",
+        "B_TERM marker enrichment",
+        "distinct from branch_a_terminal marker program"
+      ]
+    }
+  }
+]

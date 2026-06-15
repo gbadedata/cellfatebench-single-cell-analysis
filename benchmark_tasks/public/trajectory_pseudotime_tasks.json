@@ -1,0 +1,300 @@
+[
+  {
+    "task_id": "trajectory_root_state_inference_001",
+    "task_family": "trajectory_pseudotime_reasoning",
+    "difficulty": "medium",
+    "question": "Given the state-level pseudotime summaries and top marker genes, identify the most likely root/progenitor state in the trajectory.",
+    "observable_data": {
+      "root_progenitor": {
+        "median_pseudotime": 0.0963,
+        "pseudotime_range": [
+          0.0,
+          0.2182
+        ],
+        "top_markers": [
+          "LEFT3",
+          "LEFT2",
+          "LEFT1",
+          "ROOT2",
+          "ROOT3",
+          "ROOT5"
+        ]
+      },
+      "transition_state": {
+        "median_pseudotime": 0.3838,
+        "pseudotime_range": [
+          0.1746,
+          0.5748
+        ],
+        "top_markers": [
+          "RING1",
+          "RING2",
+          "RING3",
+          "LEFT2",
+          "LEFT1",
+          "LEFT3"
+        ]
+      },
+      "branch_a_terminal": {
+        "median_pseudotime": 0.7499,
+        "pseudotime_range": [
+          0.4996,
+          1.0
+        ],
+        "top_markers": [
+          "A_TERM4",
+          "A_TERM2",
+          "A_TERM5",
+          "A_TERM3",
+          "A_TERM1",
+          "RIGHT1"
+        ]
+      },
+      "branch_b_terminal": {
+        "median_pseudotime": 0.7512,
+        "pseudotime_range": [
+          0.4937,
+          1.0
+        ],
+        "top_markers": [
+          "B_TERM2",
+          "B_TERM3",
+          "B_TERM1",
+          "B_TERM4",
+          "B_TERM5",
+          "RIGHT3"
+        ]
+      }
+    },
+    "answer_format": {
+      "root_state": "string",
+      "supporting_evidence": "list of marker or pseudotime observations",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "trajectory_terminal_state_inference_002",
+    "task_family": "trajectory_pseudotime_reasoning",
+    "difficulty": "medium",
+    "question": "Using the pseudotime ranges and marker patterns, identify the two terminal states in the bifurcating trajectory.",
+    "observable_data": {
+      "root_progenitor": {
+        "median_pseudotime": 0.0963,
+        "pseudotime_range": [
+          0.0,
+          0.2182
+        ],
+        "top_markers": [
+          "LEFT3",
+          "LEFT2",
+          "LEFT1",
+          "ROOT2",
+          "ROOT3",
+          "ROOT5"
+        ]
+      },
+      "transition_state": {
+        "median_pseudotime": 0.3838,
+        "pseudotime_range": [
+          0.1746,
+          0.5748
+        ],
+        "top_markers": [
+          "RING1",
+          "RING2",
+          "RING3",
+          "LEFT2",
+          "LEFT1",
+          "LEFT3"
+        ]
+      },
+      "branch_a_terminal": {
+        "median_pseudotime": 0.7499,
+        "pseudotime_range": [
+          0.4996,
+          1.0
+        ],
+        "top_markers": [
+          "A_TERM4",
+          "A_TERM2",
+          "A_TERM5",
+          "A_TERM3",
+          "A_TERM1",
+          "RIGHT1"
+        ]
+      },
+      "branch_b_terminal": {
+        "median_pseudotime": 0.7512,
+        "pseudotime_range": [
+          0.4937,
+          1.0
+        ],
+        "top_markers": [
+          "B_TERM2",
+          "B_TERM3",
+          "B_TERM1",
+          "B_TERM4",
+          "B_TERM5",
+          "RIGHT3"
+        ]
+      }
+    },
+    "answer_format": {
+      "terminal_states": "list of two strings",
+      "supporting_evidence": "list of marker or pseudotime observations",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "trajectory_transition_state_ordering_003",
+    "task_family": "trajectory_pseudotime_reasoning",
+    "difficulty": "hard",
+    "question": "Infer the most plausible ordering of cell states from early to late pseudotime. Explain where the transition state sits relative to the root and terminal states.",
+    "observable_data": {
+      "root_progenitor": {
+        "median_pseudotime": 0.0963,
+        "pseudotime_range": [
+          0.0,
+          0.2182
+        ],
+        "top_markers": [
+          "LEFT3",
+          "LEFT2",
+          "LEFT1",
+          "ROOT2",
+          "ROOT3",
+          "ROOT5"
+        ]
+      },
+      "transition_state": {
+        "median_pseudotime": 0.3838,
+        "pseudotime_range": [
+          0.1746,
+          0.5748
+        ],
+        "top_markers": [
+          "RING1",
+          "RING2",
+          "RING3",
+          "LEFT2",
+          "LEFT1",
+          "LEFT3"
+        ]
+      },
+      "branch_a_terminal": {
+        "median_pseudotime": 0.7499,
+        "pseudotime_range": [
+          0.4996,
+          1.0
+        ],
+        "top_markers": [
+          "A_TERM4",
+          "A_TERM2",
+          "A_TERM5",
+          "A_TERM3",
+          "A_TERM1",
+          "RIGHT1"
+        ]
+      },
+      "branch_b_terminal": {
+        "median_pseudotime": 0.7512,
+        "pseudotime_range": [
+          0.4937,
+          1.0
+        ],
+        "top_markers": [
+          "B_TERM2",
+          "B_TERM3",
+          "B_TERM1",
+          "B_TERM4",
+          "B_TERM5",
+          "RIGHT3"
+        ]
+      }
+    },
+    "answer_format": {
+      "early_to_late_order": "list of state names",
+      "branching_interpretation": "short explanation",
+      "confidence": "low | medium | high"
+    }
+  },
+  {
+    "task_id": "trajectory_masked_terminal_recovery_004",
+    "task_family": "trajectory_pseudotime_reasoning",
+    "difficulty": "hard",
+    "question": "One terminal branch label has been masked. Use the marker evidence and pseudotime range to recover the most likely hidden terminal identity.",
+    "observable_data": {
+      "known_states": {
+        "root_progenitor": {
+          "n_cells": 220,
+          "median_pseudotime": 0.0963,
+          "pseudotime_range": [
+            0.0,
+            0.2182
+          ],
+          "top_markers": [
+            "LEFT3",
+            "LEFT2",
+            "LEFT1",
+            "ROOT2",
+            "ROOT3",
+            "ROOT5"
+          ]
+        },
+        "transition_state": {
+          "n_cells": 200,
+          "median_pseudotime": 0.3838,
+          "pseudotime_range": [
+            0.1746,
+            0.5748
+          ],
+          "top_markers": [
+            "RING1",
+            "RING2",
+            "RING3",
+            "LEFT2",
+            "LEFT1",
+            "LEFT3"
+          ]
+        },
+        "branch_a_terminal": {
+          "n_cells": 240,
+          "median_pseudotime": 0.7499,
+          "pseudotime_range": [
+            0.4996,
+            1.0
+          ],
+          "top_markers": [
+            "A_TERM4",
+            "A_TERM2",
+            "A_TERM5",
+            "A_TERM3",
+            "A_TERM1",
+            "RIGHT1"
+          ]
+        }
+      },
+      "masked_state": {
+        "state_name": "MASKED_TERMINAL_STATE",
+        "median_pseudotime": 0.7512,
+        "pseudotime_range": [
+          0.4937,
+          1.0
+        ],
+        "top_markers": [
+          "B_TERM2",
+          "B_TERM3",
+          "B_TERM1",
+          "B_TERM4",
+          "B_TERM5",
+          "RIGHT3"
+        ]
+      }
+    },
+    "answer_format": {
+      "recovered_state": "string",
+      "supporting_evidence": "list",
+      "confidence": "low | medium | high"
+    }
+  }
+]
