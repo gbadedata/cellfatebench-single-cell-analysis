@@ -1,0 +1,222 @@
+{
+  "calibration_type": "design_stage_calibration_review",
+  "empirical_frontier_model_calibration_claimed": false,
+  "total_tasks_reviewed": 12,
+  "task_family_counts": {
+    "trajectory_pseudotime_reasoning": 4,
+    "spatial_pattern_reasoning": 4,
+    "topological_persistence_reasoning": 4
+  },
+  "difficulty_counts": {
+    "medium": 5,
+    "hard": 7
+  },
+  "calibration_note": "This log documents design-stage difficulty and failure-mode review. It is not an empirical frontier-model calibration report.",
+  "task_reviews": [
+    {
+      "task_id": "trajectory_root_state_inference_001",
+      "task_family": "trajectory_pseudotime_reasoning",
+      "declared_difficulty": "medium",
+      "reasoning_requirements": [
+        "cell-state ordering",
+        "pseudotime interpretation"
+      ],
+      "likely_failure_modes": [
+        "confusing transition state with terminal state",
+        "giving a label without supporting marker or pseudotime evidence",
+        "selecting terminal states using marker names but ignoring pseudotime"
+      ],
+      "calibration_recommendation": "Use as an initial calibration task. Expected to be solvable by systems that combine domain markers with quantitative summaries.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "trajectory_terminal_state_inference_002",
+      "task_family": "trajectory_pseudotime_reasoning",
+      "declared_difficulty": "medium",
+      "reasoning_requirements": [
+        "cell-state ordering",
+        "pseudotime interpretation",
+        "terminal-state inference"
+      ],
+      "likely_failure_modes": [
+        "confusing transition state with terminal state",
+        "giving a label without supporting marker or pseudotime evidence",
+        "selecting terminal states using marker names but ignoring pseudotime"
+      ],
+      "calibration_recommendation": "Use as an initial calibration task. Expected to be solvable by systems that combine domain markers with quantitative summaries.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "trajectory_transition_state_ordering_003",
+      "task_family": "trajectory_pseudotime_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "cell-state ordering",
+        "pseudotime interpretation",
+        "terminal-state inference"
+      ],
+      "likely_failure_modes": [
+        "confusing transition state with terminal state",
+        "giving a label without supporting marker or pseudotime evidence",
+        "selecting terminal states using marker names but ignoring pseudotime"
+      ],
+      "calibration_recommendation": "Review with model and human calibration runs. Update difficulty label after empirical solver performance is available.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "trajectory_masked_terminal_recovery_004",
+      "task_family": "trajectory_pseudotime_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "cell-state ordering",
+        "hidden-state recovery",
+        "pseudotime interpretation",
+        "terminal-state inference"
+      ],
+      "likely_failure_modes": [
+        "confusing transition state with terminal state",
+        "failing hidden-information recovery from partial evidence",
+        "giving a label without supporting marker or pseudotime evidence",
+        "selecting terminal states using marker names but ignoring pseudotime"
+      ],
+      "calibration_recommendation": "Use for hidden-information recovery calibration. Check whether solvers infer the missing state/domain/topology from evidence rather than guessing.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "spatial_variable_gene_identification_001",
+      "task_family": "spatial_pattern_reasoning",
+      "declared_difficulty": "medium",
+      "reasoning_requirements": [
+        "gene-pattern matching",
+        "spatial-domain interpretation"
+      ],
+      "likely_failure_modes": [
+        "confusing pseudotime-associated genes with spatial-domain markers",
+        "failing to distinguish left/right/ring spatial programmes",
+        "treating any high-expression gene as spatially variable"
+      ],
+      "calibration_recommendation": "Use as an initial calibration task. Expected to be solvable by systems that combine domain markers with quantitative summaries.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "spatial_domain_marker_matching_002",
+      "task_family": "spatial_pattern_reasoning",
+      "declared_difficulty": "medium",
+      "reasoning_requirements": [
+        "gene-pattern matching",
+        "spatial-domain interpretation"
+      ],
+      "likely_failure_modes": [
+        "confusing pseudotime-associated genes with spatial-domain markers",
+        "failing to distinguish left/right/ring spatial programmes",
+        "treating any high-expression gene as spatially variable"
+      ],
+      "calibration_recommendation": "Use as an initial calibration task. Expected to be solvable by systems that combine domain markers with quantitative summaries.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "spatial_masked_domain_recovery_003",
+      "task_family": "spatial_pattern_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "gene-pattern matching",
+        "hidden-spatial-domain recovery",
+        "spatial-domain interpretation"
+      ],
+      "likely_failure_modes": [
+        "confusing pseudotime-associated genes with spatial-domain markers",
+        "failing hidden-information recovery from partial evidence",
+        "failing to distinguish left/right/ring spatial programmes",
+        "treating any high-expression gene as spatially variable"
+      ],
+      "calibration_recommendation": "Use for hidden-information recovery calibration. Check whether solvers infer the missing state/domain/topology from evidence rather than guessing.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "spatial_false_positive_signal_detection_004",
+      "task_family": "spatial_pattern_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "false-positive detection",
+        "gene-pattern matching",
+        "spatial-domain interpretation"
+      ],
+      "likely_failure_modes": [
+        "accepting an unsupported claim instead of rejecting it",
+        "confusing pseudotime-associated genes with spatial-domain markers",
+        "failing to distinguish left/right/ring spatial programmes",
+        "treating any high-expression gene as spatially variable"
+      ],
+      "calibration_recommendation": "Use for adversarial reasoning calibration. Check whether solvers reject unsupported interpretations instead of pattern-matching superficially.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "topology_bifurcation_structure_inference_001",
+      "task_family": "topological_persistence_reasoning",
+      "declared_difficulty": "medium",
+      "reasoning_requirements": [
+        "topology-aware interpretation",
+        "trajectory-vs-spatial disambiguation"
+      ],
+      "likely_failure_modes": [
+        "confusing spatial ring signal with cyclic cell-fate trajectory",
+        "ignoring branch-count evidence when inferring topology",
+        "over-interpreting persistence summaries without biological context"
+      ],
+      "calibration_recommendation": "Use as an initial calibration task. Expected to be solvable by systems that combine domain markers with quantitative summaries.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "topology_ring_signal_disambiguation_002",
+      "task_family": "topological_persistence_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "topology-aware interpretation",
+        "trajectory-vs-spatial disambiguation"
+      ],
+      "likely_failure_modes": [
+        "confusing spatial ring signal with cyclic cell-fate trajectory",
+        "ignoring branch-count evidence when inferring topology",
+        "over-interpreting persistence summaries without biological context"
+      ],
+      "calibration_recommendation": "Review with model and human calibration runs. Update difficulty label after empirical solver performance is available.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "topology_masked_structure_recovery_003",
+      "task_family": "topological_persistence_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "hidden-topology recovery",
+        "topology-aware interpretation",
+        "trajectory-vs-spatial disambiguation"
+      ],
+      "likely_failure_modes": [
+        "confusing spatial ring signal with cyclic cell-fate trajectory",
+        "failing hidden-information recovery from partial evidence",
+        "ignoring branch-count evidence when inferring topology",
+        "over-interpreting persistence summaries without biological context"
+      ],
+      "calibration_recommendation": "Use for hidden-information recovery calibration. Check whether solvers infer the missing state/domain/topology from evidence rather than guessing.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    },
+    {
+      "task_id": "topology_false_positive_loop_detection_004",
+      "task_family": "topological_persistence_reasoning",
+      "declared_difficulty": "hard",
+      "reasoning_requirements": [
+        "false-positive topology detection",
+        "topology-aware interpretation",
+        "trajectory-vs-spatial disambiguation"
+      ],
+      "likely_failure_modes": [
+        "accepting an unsupported claim instead of rejecting it",
+        "confusing spatial ring signal with cyclic cell-fate trajectory",
+        "ignoring branch-count evidence when inferring topology",
+        "over-interpreting persistence summaries without biological context"
+      ],
+      "calibration_recommendation": "Use for adversarial reasoning calibration. Check whether solvers reject unsupported interpretations instead of pattern-matching superficially.",
+      "empirical_calibration_status": "not_yet_run_against_frontier_models"
+    }
+  ]
+}
