@@ -1,0 +1,75 @@
+{
+  "total_tasks_scored": 6,
+  "passed_tasks": 6,
+  "average_score": 1.0,
+  "task_results": [
+    {
+      "task_id": "trajectory_root_state_inference_001",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": true,
+        "required_evidence_terms_found": 3,
+        "required_evidence_terms_total": 3,
+        "confidence_present": true
+      }
+    },
+    {
+      "task_id": "trajectory_terminal_state_inference_002",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": true,
+        "required_evidence_terms_found": 4,
+        "required_evidence_terms_total": 4,
+        "confidence_present": true
+      }
+    },
+    {
+      "task_id": "spatial_variable_gene_identification_001",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": true,
+        "required_evidence_terms_found": 3,
+        "required_evidence_terms_total": 3,
+        "confidence_present": true
+      }
+    },
+    {
+      "task_id": "spatial_false_positive_signal_detection_004",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": false,
+        "boolean_claim_match": true,
+        "required_evidence_terms_found": 3,
+        "required_evidence_terms_total": 3,
+        "confidence_present": true
+      }
+    },
+    {
+      "task_id": "topology_bifurcation_structure_inference_001",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": true,
+        "required_evidence_terms_found": 4,
+        "required_evidence_terms_total": 4,
+        "confidence_present": true
+      }
+    },
+    {
+      "task_id": "topology_ring_signal_disambiguation_002",
+      "score": 1.0,
+      "passed": true,
+      "checks": {
+        "label_or_claim_match": false,
+        "boolean_cyclic_match": true,
+        "required_evidence_terms_found": 4,
+        "required_evidence_terms_total": 4,
+        "confidence_present": true
+      }
+    }
+  ]
+}

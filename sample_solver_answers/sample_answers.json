@@ -1,0 +1,41 @@
+[
+  {
+    "task_id": "trajectory_root_state_inference_001",
+    "root_state": "root_progenitor",
+    "supporting_evidence": ["lowest pseudotime", "ROOT marker enrichment", "early state"],
+    "confidence": "high"
+  },
+  {
+    "task_id": "trajectory_terminal_state_inference_002",
+    "terminal_states": ["branch_a_terminal", "branch_b_terminal"],
+    "supporting_evidence": ["highest pseudotime", "A_TERM markers", "B_TERM markers", "terminal states"],
+    "confidence": "high"
+  },
+  {
+    "task_id": "spatial_variable_gene_identification_001",
+    "spatial_gene_groups": ["spatial_domain_left", "spatial_domain_right", "spatial_ring"],
+    "spatial_interpretation": "LEFT, RIGHT and RING genes show spatial correlation with domain structure.",
+    "confidence": "high"
+  },
+  {
+    "task_id": "spatial_false_positive_signal_detection_004",
+    "claim_supported": false,
+    "reason": "This is a false-positive interpretation because cycle genes do not define a stable spatial domain.",
+    "supporting_evidence": ["false-positive", "cycle", "not stable spatial domain"],
+    "confidence": "medium"
+  },
+  {
+    "task_id": "topology_bifurcation_structure_inference_001",
+    "topological_interpretation": "bifurcating",
+    "major_branch_count": 2,
+    "supporting_evidence": ["branch_a", "branch_b", "two terminal branches", "bifurcating"],
+    "confidence": "high"
+  },
+  {
+    "task_id": "topology_ring_signal_disambiguation_002",
+    "is_cyclic_cell_fate_trajectory": false,
+    "correct_interpretation": "The RING signal is spatial, not cyclic trajectory evidence. The trajectory remains bifurcating.",
+    "supporting_evidence": ["RING", "spatial", "not cyclic trajectory", "bifurcating"],
+    "confidence": "high"
+  }
+]
