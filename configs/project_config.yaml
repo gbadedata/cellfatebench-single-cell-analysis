@@ -1,0 +1,46 @@
+project:
+  name: cellfatebench-single-cell-analysis
+  title: "CellFateBench: A Single-Cell Benchmark for Trajectory, Spatial, and Topological Analysis"
+  version: "0.1.0"
+  scope: research_portfolio_benchmark
+  clinical_use: false
+
+benchmark:
+  task_families:
+    - trajectory_pseudotime_reasoning
+    - spatial_pattern_reasoning
+    - topological_persistence_reasoning
+
+datasets:
+  strategy: controlled_synthetic_single_cell_scenarios
+  rationale: "Synthetic benchmark data provides known hidden truth for trajectory, spatial, and topology tasks."
+  planned_outputs:
+    - synthetic_cell_state_table
+    - trajectory_ground_truth
+    - spatial_ground_truth
+    - topology_ground_truth
+
+design_principles:
+  - tasks_should_test_reasoning_not_surface_pattern_matching
+  - public_tasks_must_not_expose_hidden_answers
+  - hidden_answers_must_be_machine_readable
+  - oracle_outputs_should_explain_reasoning
+  - validators_should_be_deterministic
+  - scoring_should_be_transparent
+  - calibration_logs_should_document_difficulty_and_failure_modes
+  - every_major_claim_should_have_evidence
+
+jd_alignment:
+  domain: Bioinformatics and Single-Cell Genomics
+  capabilities:
+    - scanpy_style_single_cell_workflows
+    - pseudotime_ordering
+    - trajectory_reasoning
+    - spatial_variable_gene_reasoning
+    - topological_data_analysis
+    - persistence_based_analysis
+    - oracle_function_design
+    - solution_validator_design
+    - benchmark_calibration
+    - hidden_information_recovery
+    - computational_reproducibility

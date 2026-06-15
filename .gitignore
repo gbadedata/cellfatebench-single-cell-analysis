@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+.env
+.venv/
+venv/
+
+.DS_Store
+.vscode/
+
+# Large single-cell and genomics artifacts
+*.h5ad
+*.loom
+*.zarr
+*.mtx
+*.mtx.gz
+*.fastq
+*.fastq.gz
+*.bam
+*.sam
+*.cram
+
+# Local runtime/cache outputs
+results/tmp/
+data/cache/
+.coverage
+htmlcov/
