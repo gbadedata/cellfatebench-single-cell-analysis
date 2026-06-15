@@ -1,0 +1,95 @@
+{
+  "dataset_name": "cellfatebench_controlled_synthetic_v1",
+  "random_seed": 42,
+  "n_cells": 900,
+  "n_genes": 60,
+  "trajectory_truth": {
+    "root_state": "root_progenitor",
+    "transition_state": "transition_state",
+    "terminal_states": [
+      "branch_a_terminal",
+      "branch_b_terminal"
+    ],
+    "branch_labels": [
+      "root",
+      "transition",
+      "branch_a",
+      "branch_b"
+    ],
+    "pseudotime_column": "true_pseudotime"
+  },
+  "spatial_truth": {
+    "coordinate_columns": [
+      "spatial_x",
+      "spatial_y"
+    ],
+    "domain_column": "true_spatial_domain",
+    "spatially_variable_gene_groups": [
+      "spatial_domain_left",
+      "spatial_domain_right",
+      "spatial_ring"
+    ]
+  },
+  "topology_truth": {
+    "expected_structure": "bifurcating_tree_with_transition_ring_signal",
+    "expected_major_branches": 2,
+    "expected_root_components": 1,
+    "designed_ring_signal_genes": [
+      "RING1",
+      "RING2",
+      "RING3"
+    ],
+    "interpretation_note": "The cell-state trajectory is tree-like, while spatial marker genes include a ring-pattern signal for topology-aware tasks."
+  },
+  "gene_groups": {
+    "root_state": [
+      "ROOT1",
+      "ROOT2",
+      "ROOT3",
+      "ROOT4",
+      "ROOT5"
+    ],
+    "transition_state": [
+      "TRANS1",
+      "TRANS2",
+      "TRANS3",
+      "TRANS4",
+      "TRANS5"
+    ],
+    "branch_a_terminal": [
+      "A_TERM1",
+      "A_TERM2",
+      "A_TERM3",
+      "A_TERM4",
+      "A_TERM5"
+    ],
+    "branch_b_terminal": [
+      "B_TERM1",
+      "B_TERM2",
+      "B_TERM3",
+      "B_TERM4",
+      "B_TERM5"
+    ],
+    "cycling": [
+      "CYCLE1",
+      "CYCLE2",
+      "CYCLE3",
+      "CYCLE4"
+    ],
+    "spatial_domain_left": [
+      "LEFT1",
+      "LEFT2",
+      "LEFT3"
+    ],
+    "spatial_domain_right": [
+      "RIGHT1",
+      "RIGHT2",
+      "RIGHT3"
+    ],
+    "spatial_ring": [
+      "RING1",
+      "RING2",
+      "RING3"
+    ]
+  }
+}
