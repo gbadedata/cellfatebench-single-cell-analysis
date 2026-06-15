@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  test-and-pipeline:
+    name: Test and run benchmark pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up micromamba environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          environment-name: cellfatebench
+          cache-environment: true
+          cache-downloads: true
+
+      - name: Run test suite
+        shell: bash -l {0}
+        run: |
+          make test
+
+      - name: Run full benchmark pipeline
+        shell: bash -l {0}
+        run: |
+          make pipeline
+
+      - name: Validate expected outputs
+        shell: bash -l {0}
+        run: |
+          test -f data/synthetic/synthetic_cell_metadata.csv
+          test -f data/synthetic/synthetic_expression_matrix.csv
+          test -f benchmark_tasks/public/trajectory_pseudotime_tasks.json
+          test -f benchmark_tasks/public/spatial_pattern_tasks.json
+          test -f benchmark_tasks/public/topological_persistence_tasks.json
+          test -f benchmark_tasks/calibration_logs/design_stage_calibration_log.json
+          test -f results/reports/sample_solver_score_report.json
+          test -f results/tables/benchmark_task_summary.csv
+          test -f results/figures/synthetic_spatial_layout.png
+
+  docker-reproducibility:
+    name: Docker reproducibility
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t cellfatebench:ci .
+
+      - name: Run tests inside Docker
+        run: |
+          docker run --rm cellfatebench:ci make test
+
+      - name: Run full pipeline inside Docker
+        run: |
+          docker run --rm cellfatebench:ci make pipeline
