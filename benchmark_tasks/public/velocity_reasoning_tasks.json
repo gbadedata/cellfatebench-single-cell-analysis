@@ -1,0 +1,283 @@
+[
+  {
+    "task_id": "velocity_root_direction_inference_001",
+    "task_family": "velocity_reasoning",
+    "difficulty": "medium",
+    "task_type": "velocity_supported_root_direction_inference",
+    "prompt": "Using the public scVelo pancreas cluster structure and RNA velocity layer availability, identify the most plausible early upstream cell population for an endocrine differentiation interpretation. Explain the evidence that supports your answer.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "candidate_states": [
+        "Ductal",
+        "Ngn3 low EP",
+        "Ngn3 high EP",
+        "Pre-endocrine",
+        "Alpha",
+        "Beta",
+        "Delta",
+        "Epsilon"
+      ],
+      "reference_progression_hint": "Endocrine differentiation tasks should distinguish upstream ductal or endocrine progenitor-like populations from terminal endocrine states."
+    },
+    "expected_response_format": {
+      "answer": "string",
+      "supporting_evidence": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  },
+  {
+    "task_id": "velocity_terminal_fate_support_002",
+    "task_family": "velocity_reasoning",
+    "difficulty": "medium",
+    "task_type": "terminal_fate_support_from_velocity_context",
+    "prompt": "Identify the terminal endocrine fate groups represented in the public pancreas cluster labels. Explain why these should be treated as terminal fate candidates rather than early progenitor states.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "candidate_terminal_labels": [
+        "Alpha",
+        "Beta",
+        "Delta",
+        "Epsilon"
+      ],
+      "candidate_non_terminal_labels": [
+        "Ductal",
+        "Ngn3 low EP",
+        "Ngn3 high EP",
+        "Pre-endocrine"
+      ]
+    },
+    "expected_response_format": {
+      "answer": "list of strings",
+      "supporting_evidence": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  },
+  {
+    "task_id": "velocity_contradiction_detection_003",
+    "task_family": "velocity_reasoning",
+    "difficulty": "hard",
+    "task_type": "velocity_contradiction_detection",
+    "prompt": "A solver claims that the most plausible endocrine differentiation direction is from Alpha, Beta, Delta, and Epsilon cells back into Ductal cells. Decide whether this claim should be accepted or rejected, and justify your decision using the dataset context.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "claim_to_evaluate": "Terminal endocrine cell types are upstream of ductal cells in the differentiation interpretation.",
+      "reference_ordering_hint": [
+        "Ductal",
+        "Ngn3 low EP",
+        "Ngn3 high EP",
+        "Pre-endocrine",
+        "Alpha/Beta/Delta/Epsilon"
+      ]
+    },
+    "expected_response_format": {
+      "accept_claim": "boolean",
+      "supporting_evidence": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  },
+  {
+    "task_id": "velocity_latent_time_ordering_004",
+    "task_family": "velocity_reasoning",
+    "difficulty": "hard",
+    "task_type": "latent_time_ordering_reasoning",
+    "prompt": "Propose a biologically plausible early-to-late ordering of the annotated pancreas populations for a velocity-aware endocrine differentiation task. The answer should distinguish progenitor-like, transitional, and terminal states.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "available_cluster_labels": [
+        "Alpha",
+        "Beta",
+        "Delta",
+        "Ductal",
+        "Epsilon",
+        "Ngn3 high EP",
+        "Ngn3 low EP",
+        "Pre-endocrine"
+      ],
+      "ordering_instruction": "Use cluster identity and endocrine differentiation context. Do not claim that a full latent-time computation has already been performed."
+    },
+    "expected_response_format": {
+      "ordered_groups": "list of strings",
+      "supporting_evidence": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  },
+  {
+    "task_id": "velocity_low_confidence_failure_mode_005",
+    "task_family": "velocity_reasoning",
+    "difficulty": "hard",
+    "task_type": "uncertainty_and_failure_mode_detection",
+    "prompt": "A solver sees that spliced and unspliced layers exist and immediately claims a precise velocity direction for every cluster without computing moments, velocities, or velocity confidence. Should this answer be treated as fully supported? Explain the failure mode.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "claim_to_evaluate": "Layer availability alone is sufficient to make precise per-cluster velocity direction claims.",
+      "available_evidence": [
+        "spliced layer exists",
+        "unspliced layer exists",
+        "cluster annotations exist",
+        "full velocity graph and confidence summaries are not yet included in this task"
+      ]
+    },
+    "expected_response_format": {
+      "accept_claim": "boolean",
+      "failure_mode": "string",
+      "supporting_evidence": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  },
+  {
+    "task_id": "velocity_marker_velocity_alignment_006",
+    "task_family": "velocity_reasoning",
+    "difficulty": "hard",
+    "task_type": "marker_velocity_alignment_reasoning",
+    "prompt": "Explain how a future solver should evaluate whether marker-gene evidence and RNA velocity evidence support the same endocrine transition. The answer should describe what agreement and disagreement would look like.",
+    "observable_evidence": {
+      "dataset_name": "scvelo_pancreas",
+      "n_cells": 3696,
+      "n_genes": 27998,
+      "annotation_column": "clusters",
+      "cluster_counts": {
+        "Alpha": 481,
+        "Beta": 591,
+        "Delta": 70,
+        "Ductal": 916,
+        "Epsilon": 142,
+        "Ngn3 high EP": 642,
+        "Ngn3 low EP": 262,
+        "Pre-endocrine": 592
+      },
+      "available_layers": [
+        "spliced",
+        "unspliced"
+      ],
+      "available_embeddings": [
+        "X_pca",
+        "X_umap"
+      ],
+      "important_scope_note": "These tasks use public scVelo pancreas metadata and RNA velocity layer availability. Full velocity graph computation is introduced in a later v2 step.",
+      "reasoning_targets": [
+        "marker evidence",
+        "spliced and unspliced layers",
+        "velocity direction",
+        "transition state interpretation",
+        "terminal fate interpretation"
+      ],
+      "scope_boundary": "This task evaluates reasoning design. It should not invent uncomputed gene-level velocity values."
+    },
+    "expected_response_format": {
+      "answer": "string",
+      "agreement_criteria": "list of strings",
+      "disagreement_criteria": "list of strings",
+      "confidence": "float between 0 and 1"
+    }
+  }
+]
