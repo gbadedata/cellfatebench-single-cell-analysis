@@ -1,14 +1,17 @@
 # CellFateBench: Single-Cell Genomics Benchmark for Scientific Reasoning
 
 ![CI](https://github.com/gbadedata/cellfatebench-single-cell-analysis/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Tests](https://img.shields.io/badge/tests-57%20passing-brightgreen)
+![Pipelines](https://img.shields.io/badge/pipelines-v1%20%2B%20v2-brightgreen)
+![Docker](https://img.shields.io/badge/Docker-validated-blue)
+![Single-cell](https://img.shields.io/badge/domain-single--cell%20genomics-purple)
+![RNA velocity](https://img.shields.io/badge/extension-RNA%20velocity-purple)
 
 CellFateBench is a reproducible scientific software and benchmark-design project for evaluating reasoning over single-cell genomics workflows.
 
 The project converts single-cell analysis scenarios into structured benchmark tasks with public prompts, hidden answer keys, oracle outputs, validators, scoring logic, calibration reports, reproducible pipelines, Docker validation, GitHub Actions CI, and reviewer-ready evidence.
 
-Repository:
-
-https://github.com/gbadedata/cellfatebench-single-cell-analysis
 
 ## Executive Summary
 
