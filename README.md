@@ -12,6 +12,11 @@ CellFateBench is a reproducible scientific software and benchmark-design project
 
 The project converts single-cell analysis scenarios into structured benchmark tasks with public prompts, hidden answer keys, oracle outputs, validators, scoring logic, calibration reports, reproducible pipelines, Docker validation, GitHub Actions CI, and reviewer-ready evidence.
 
+## Project Write-ups
+
+- [Beyond Clusters and Plots: Building CellFateBench, a Benchmark for Single-Cell Genomics Reasoning](https://medium.com/@gbadedata/beyond-clusters-and-plots-building-cellfatebench-a-benchmark-for-single-cell-genomics-reasoning-6d82771de6a0)
+
+- [Engineering CellFateBench: A Reproducible Python Benchmark for Single-Cell Genomics Reasoning](https://dev.to/gbadedata/engineering-cellfatebench-a-reproducible-python-benchmark-for-single-cell-genomics-reasoning-40ch)
 
 ## Executive Summary
 
