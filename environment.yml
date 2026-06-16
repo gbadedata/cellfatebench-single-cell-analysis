@@ -15,5 +15,6 @@ dependencies:
   - rich
   - scanpy
   - anndata
+  - scvelo
   - gudhi
   - pip

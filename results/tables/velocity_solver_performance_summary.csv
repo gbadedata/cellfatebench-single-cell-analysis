@@ -1,0 +1,5 @@
+solver_name,solver_type,mean_score,passed_tasks,total_tasks,mean_overclaim_penalty,pass_rate
+oracle_velocity_solver,oracle,0.921,5,6,0.0,0.833
+strong_velocity_solver,strong_sample,0.921,5,6,0.0,0.833
+weak_velocity_solver,weak_sample,0.358,0,6,0.0,0.0
+overclaiming_velocity_solver,failure_mode_sample,0.341,0,6,0.15,0.0

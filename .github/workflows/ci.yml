@@ -11,7 +11,7 @@ env:
 
 jobs:
   test-and-pipeline:
-    name: Test and run benchmark pipeline
+    name: Test and run benchmark pipelines
     runs-on: ubuntu-latest
 
     steps:
@@ -31,12 +31,17 @@ jobs:
         run: |
           make test
 
-      - name: Run full benchmark pipeline
+      - name: Run v1 benchmark pipeline
         shell: bash -l {0}
         run: |
           make pipeline
 
-      - name: Validate expected outputs
+      - name: Run v2 public RNA velocity pipeline
+        shell: bash -l {0}
+        run: |
+          make pipeline-v2
+
+      - name: Validate v1 expected outputs
         shell: bash -l {0}
         run: |
           test -f data/synthetic/synthetic_cell_metadata.csv
@@ -48,6 +53,22 @@ jobs:
           test -f results/reports/sample_solver_score_report.json
           test -f results/tables/benchmark_task_summary.csv
           test -f results/figures/synthetic_spatial_layout.png
+
+      - name: Validate v2 expected outputs
+        shell: bash -l {0}
+        run: |
+          test -f results/tables/velocity_dataset_summary.csv
+          test -f results/tables/velocity_layer_summary.csv
+          test -f benchmark_tasks/public/velocity_reasoning_tasks.json
+          test -f benchmark_tasks/hidden/velocity_reasoning_answers.json
+          test -f benchmark_tasks/oracle_outputs/velocity_reasoning_oracle_outputs.json
+          test -f results/tables/velocity_solver_performance_summary.csv
+          test -f results/tables/velocity_task_performance_summary.csv
+          test -f results/figures/velocity_solver_score_by_profile.png
+          test -f results/figures/velocity_task_pass_rate.png
+          test -f benchmark_tasks/calibration_logs/empirical_velocity_calibration_log.json
+          test -f results/tables/velocity_task_difficulty_rebalanced.csv
+          test -f results/figures/velocity_task_difficulty_rebalance.png
 
   docker-reproducibility:
     name: Docker reproducibility
@@ -65,6 +86,10 @@ jobs:
         run: |
           docker run --rm cellfatebench:ci make test
 
-      - name: Run full pipeline inside Docker
+      - name: Run v1 pipeline inside Docker
         run: |
           docker run --rm cellfatebench:ci make pipeline
+
+      - name: Run v2 pipeline inside Docker
+        run: |
+          docker run --rm cellfatebench:ci make pipeline-v2

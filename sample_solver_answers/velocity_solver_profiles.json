@@ -1,0 +1,174 @@
+[
+  {
+    "solver_name": "oracle_velocity_solver",
+    "solver_type": "oracle",
+    "answers": [
+      {
+        "task_id": "velocity_root_direction_inference_001",
+        "answer": "Ductal",
+        "supporting_evidence": ["Ductal is upstream", "terminal endocrine states are Alpha, Beta, Delta, and Epsilon"],
+        "confidence": 0.82
+      },
+      {
+        "task_id": "velocity_terminal_fate_support_002",
+        "answer": ["Alpha", "Beta", "Delta", "Epsilon"],
+        "supporting_evidence": ["terminal endocrine fate labels include Alpha, Beta, Delta, and Epsilon"],
+        "confidence": 0.9
+      },
+      {
+        "task_id": "velocity_contradiction_detection_003",
+        "accept_claim": false,
+        "supporting_evidence": ["reject reversed direction", "terminal states should not be upstream of Ductal"],
+        "confidence": 0.88
+      },
+      {
+        "task_id": "velocity_latent_time_ordering_004",
+        "ordered_groups": ["Ductal", "Ngn3 low EP", "Ngn3 high EP", "Pre-endocrine", "Alpha/Beta/Delta/Epsilon"],
+        "supporting_evidence": ["Ductal upstream", "Ngn3 transitional", "Pre-endocrine before terminal endocrine fates"],
+        "confidence": 0.78
+      },
+      {
+        "task_id": "velocity_low_confidence_failure_mode_005",
+        "accept_claim": false,
+        "failure_mode": "spliced and unspliced layers are necessary but insufficient for precise velocity confidence claims",
+        "supporting_evidence": ["spliced layer", "unspliced layer", "insufficient without velocity confidence"],
+        "confidence": 0.91
+      },
+      {
+        "task_id": "velocity_marker_velocity_alignment_006",
+        "answer": "Marker and velocity evidence should be checked for directional agreement and disagreement without inventing uncomputed values.",
+        "supporting_evidence": ["marker evidence", "velocity direction", "agreement", "disagreement"],
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "solver_name": "strong_velocity_solver",
+    "solver_type": "strong_sample",
+    "answers": [
+      {
+        "task_id": "velocity_root_direction_inference_001",
+        "answer": "Ductal",
+        "supporting_evidence": ["Ductal appears upstream of terminal endocrine labels"],
+        "confidence": 0.7
+      },
+      {
+        "task_id": "velocity_terminal_fate_support_002",
+        "answer": ["Alpha", "Beta", "Delta", "Epsilon"],
+        "supporting_evidence": ["Alpha and Beta are terminal endocrine labels"],
+        "confidence": 0.82
+      },
+      {
+        "task_id": "velocity_contradiction_detection_003",
+        "accept_claim": false,
+        "supporting_evidence": ["reject because terminal endocrine states are not upstream of Ductal"],
+        "confidence": 0.76
+      },
+      {
+        "task_id": "velocity_latent_time_ordering_004",
+        "ordered_groups": ["Ductal", "Ngn3 low EP", "Ngn3 high EP", "Pre-endocrine", "Alpha/Beta/Delta/Epsilon"],
+        "supporting_evidence": ["Ductal", "Ngn3", "Pre-endocrine", "terminal"],
+        "confidence": 0.72
+      },
+      {
+        "task_id": "velocity_low_confidence_failure_mode_005",
+        "accept_claim": false,
+        "failure_mode": "layer availability is insufficient without confidence summaries",
+        "supporting_evidence": ["spliced", "unspliced", "insufficient", "confidence"],
+        "confidence": 0.83
+      },
+      {
+        "task_id": "velocity_marker_velocity_alignment_006",
+        "answer": "Compare marker and velocity direction for agreement and disagreement.",
+        "supporting_evidence": ["marker", "velocity", "agreement", "disagreement", "direction"],
+        "confidence": 0.75
+      }
+    ]
+  },
+  {
+    "solver_name": "overclaiming_velocity_solver",
+    "solver_type": "failure_mode_sample",
+    "answers": [
+      {
+        "task_id": "velocity_root_direction_inference_001",
+        "answer": "Ductal",
+        "supporting_evidence": ["Ductal is definitely proven as upstream for every cluster"],
+        "confidence": 1.0
+      },
+      {
+        "task_id": "velocity_terminal_fate_support_002",
+        "answer": ["Alpha", "Beta", "Delta", "Epsilon"],
+        "supporting_evidence": ["these are definitely the only terminal cells with no uncertainty"],
+        "confidence": 1.0
+      },
+      {
+        "task_id": "velocity_contradiction_detection_003",
+        "accept_claim": true,
+        "supporting_evidence": ["terminal states are guaranteed upstream"],
+        "confidence": 1.0
+      },
+      {
+        "task_id": "velocity_latent_time_ordering_004",
+        "ordered_groups": ["Alpha", "Beta", "Delta", "Epsilon", "Ductal"],
+        "supporting_evidence": ["fully proven reverse ordering"],
+        "confidence": 1.0
+      },
+      {
+        "task_id": "velocity_low_confidence_failure_mode_005",
+        "accept_claim": true,
+        "failure_mode": "spliced and unspliced layers prove precise velocity for every cluster",
+        "supporting_evidence": ["proves precise velocity", "every cluster"],
+        "confidence": 1.0
+      },
+      {
+        "task_id": "velocity_marker_velocity_alignment_006",
+        "answer": "Marker and velocity values are fully proven even without computation.",
+        "supporting_evidence": ["fully proven", "guaranteed"],
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "solver_name": "weak_velocity_solver",
+    "solver_type": "weak_sample",
+    "answers": [
+      {
+        "task_id": "velocity_root_direction_inference_001",
+        "answer": "Beta",
+        "supporting_evidence": ["Beta has many cells"],
+        "confidence": 0.6
+      },
+      {
+        "task_id": "velocity_terminal_fate_support_002",
+        "answer": ["Ductal", "Ngn3 low EP"],
+        "supporting_evidence": ["these appear in the dataset"],
+        "confidence": 0.55
+      },
+      {
+        "task_id": "velocity_contradiction_detection_003",
+        "accept_claim": true,
+        "supporting_evidence": ["the claim sounds possible"],
+        "confidence": 0.5
+      },
+      {
+        "task_id": "velocity_latent_time_ordering_004",
+        "ordered_groups": ["Beta", "Alpha", "Ductal"],
+        "supporting_evidence": ["labels exist"],
+        "confidence": 0.45
+      },
+      {
+        "task_id": "velocity_low_confidence_failure_mode_005",
+        "accept_claim": true,
+        "failure_mode": "no issue",
+        "supporting_evidence": ["layers exist"],
+        "confidence": 0.4
+      },
+      {
+        "task_id": "velocity_marker_velocity_alignment_006",
+        "answer": "Use any marker.",
+        "supporting_evidence": ["marker"],
+        "confidence": 0.4
+      }
+    ]
+  }
+]

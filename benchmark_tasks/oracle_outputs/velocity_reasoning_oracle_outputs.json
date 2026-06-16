@@ -1,0 +1,92 @@
+[
+  {
+    "task_id": "velocity_root_direction_inference_001",
+    "oracle_answer": "Ductal",
+    "rationale": "Ductal is the most plausible upstream population in this public pancreas velocity context because the terminal endocrine labels are Alpha, Beta, Delta, and Epsilon, while Ngn3 and pre-endocrine labels represent intermediate endocrine differentiation states.",
+    "evidence_terms": [
+      "Ductal",
+      "upstream",
+      "Ngn3",
+      "terminal endocrine states"
+    ],
+    "confidence": 0.72
+  },
+  {
+    "task_id": "velocity_terminal_fate_support_002",
+    "oracle_answer": [
+      "Alpha",
+      "Beta",
+      "Delta",
+      "Epsilon"
+    ],
+    "rationale": "Alpha, Beta, Delta, and Epsilon correspond to endocrine fate labels. They should be treated as terminal fate candidates rather than early progenitor-like states.",
+    "evidence_terms": [
+      "Alpha",
+      "Beta",
+      "Delta",
+      "Epsilon",
+      "terminal"
+    ],
+    "confidence": 0.86
+  },
+  {
+    "task_id": "velocity_contradiction_detection_003",
+    "oracle_answer": {
+      "accept_claim": false
+    },
+    "rationale": "The claim should be rejected because it reverses the expected direction. Terminal endocrine labels should not be treated as upstream of Ductal in this differentiation interpretation.",
+    "evidence_terms": [
+      "reject",
+      "terminal",
+      "Ductal",
+      "upstream"
+    ],
+    "confidence": 0.88
+  },
+  {
+    "task_id": "velocity_latent_time_ordering_004",
+    "oracle_answer": [
+      "Ductal",
+      "Ngn3 low EP",
+      "Ngn3 high EP",
+      "Pre-endocrine",
+      "Alpha/Beta/Delta/Epsilon"
+    ],
+    "rationale": "A plausible reference ordering is Ductal, Ngn3 low EP, Ngn3 high EP, Pre-endocrine, then the terminal endocrine fates. This should be described as a reference ordering unless latent time has been explicitly computed.",
+    "evidence_terms": [
+      "Ductal",
+      "Ngn3 low EP",
+      "Ngn3 high EP",
+      "Pre-endocrine",
+      "terminal"
+    ],
+    "confidence": 0.74
+  },
+  {
+    "task_id": "velocity_low_confidence_failure_mode_005",
+    "oracle_answer": {
+      "accept_claim": false
+    },
+    "rationale": "The claim should not be treated as fully supported. Spliced and unspliced layers are required inputs for RNA velocity, but layer availability alone does not prove precise velocity direction for every cluster.",
+    "evidence_terms": [
+      "spliced",
+      "unspliced",
+      "insufficient",
+      "velocity confidence"
+    ],
+    "confidence": 0.9
+  },
+  {
+    "task_id": "velocity_marker_velocity_alignment_006",
+    "oracle_answer": "Marker and velocity evidence should be evaluated for directional agreement without inventing uncomputed gene-level velocity values.",
+    "rationale": "A future solver should compare marker-defined state transitions with computed velocity direction and confidence. Agreement means marker evidence, transition-state identity, and velocity direction support the same biological progression. Disagreement means marker interpretation and velocity direction point to different transitions or the velocity confidence is too weak.",
+    "evidence_terms": [
+      "marker",
+      "velocity",
+      "agreement",
+      "disagreement",
+      "direction"
+    ],
+    "confidence": 0.78
+  }
+]

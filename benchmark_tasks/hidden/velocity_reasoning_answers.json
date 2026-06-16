@@ -1,0 +1,103 @@
+[
+  {
+    "task_id": "velocity_root_direction_inference_001",
+    "expected_answer": "Ductal",
+    "accepted_answers": [
+      "Ductal",
+      "Ductal or endocrine progenitor-like upstream population"
+    ],
+    "required_evidence_terms": [
+      "Ductal",
+      "upstream",
+      "progenitor",
+      "terminal"
+    ],
+    "confidence_guidance": "Moderate confidence because full velocity graph computation is not yet included."
+  },
+  {
+    "task_id": "velocity_terminal_fate_support_002",
+    "expected_answer": [
+      "Alpha",
+      "Beta",
+      "Delta",
+      "Epsilon"
+    ],
+    "accepted_answers": [
+      [
+        "Alpha",
+        "Beta",
+        "Delta",
+        "Epsilon"
+      ]
+    ],
+    "required_evidence_terms": [
+      "terminal",
+      "endocrine",
+      "Alpha",
+      "Beta"
+    ],
+    "confidence_guidance": "High confidence for identifying terminal fate labels from annotation context."
+  },
+  {
+    "task_id": "velocity_contradiction_detection_003",
+    "expected_boolean_claim": false,
+    "expected_answer": "Reject the claim",
+    "required_evidence_terms": [
+      "reject",
+      "terminal",
+      "Ductal",
+      "upstream"
+    ],
+    "confidence_guidance": "High confidence because the proposed direction reverses the expected interpretation."
+  },
+  {
+    "task_id": "velocity_latent_time_ordering_004",
+    "expected_answer": [
+      "Ductal",
+      "Ngn3 low EP",
+      "Ngn3 high EP",
+      "Pre-endocrine",
+      "Alpha/Beta/Delta/Epsilon"
+    ],
+    "accepted_answers": [
+      [
+        "Ductal",
+        "Ngn3 low EP",
+        "Ngn3 high EP",
+        "Pre-endocrine",
+        "Alpha/Beta/Delta/Epsilon"
+      ]
+    ],
+    "required_evidence_terms": [
+      "Ductal",
+      "Ngn3",
+      "Pre-endocrine",
+      "terminal"
+    ],
+    "confidence_guidance": "Moderate confidence because this is a reference ordering, not a computed latent-time result."
+  },
+  {
+    "task_id": "velocity_low_confidence_failure_mode_005",
+    "expected_boolean_claim": false,
+    "expected_answer": "Layer availability alone is insufficient for precise velocity direction claims.",
+    "required_evidence_terms": [
+      "spliced",
+      "unspliced",
+      "insufficient",
+      "confidence"
+    ],
+    "confidence_guidance": "High confidence because the task explicitly withholds computed velocity confidence summaries."
+  },
+  {
+    "task_id": "velocity_marker_velocity_alignment_006",
+    "expected_answer": "Marker and velocity evidence should be checked for directional agreement without inventing uncomputed values.",
+    "required_evidence_terms": [
+      "marker",
+      "velocity",
+      "agreement",
+      "disagreement",
+      "direction"
+    ],
+    "confidence_guidance": "Moderate confidence because this is a reasoning-design task."
+  }
+]
