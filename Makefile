@@ -1,6 +1,6 @@
 PYTHONPATH := src
 
-.PHONY: test dataset trajectory spatial topology-summary topology-tasks calibration score pipeline velocity-data velocity-tasks velocity-evaluate pipeline-v2
+.PHONY: test dataset trajectory spatial topology-summary topology-tasks calibration score pipeline velocity-data velocity-tasks velocity-evaluate velocity-calibration pipeline-v2
 
 test:
 	PYTHONPATH=$(PYTHONPATH) pytest -q
@@ -38,6 +38,10 @@ velocity-tasks:
 
 velocity-evaluate:
 	PYTHONPATH=$(PYTHONPATH) python scripts/13_evaluate_velocity_solvers.py
+
+
+velocity-calibration:
+	PYTHONPATH=$(PYTHONPATH) python scripts/14_generate_velocity_calibration.py
 
 pipeline-v2:
 	PYTHONPATH=$(PYTHONPATH) python scripts/12_run_v2_pipeline.py

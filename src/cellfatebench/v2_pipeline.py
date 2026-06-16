@@ -8,6 +8,7 @@ from typing import Any
 from cellfatebench.public_velocity import write_velocity_dataset_outputs
 from cellfatebench.velocity_tasks import write_velocity_task_files
 from cellfatebench.velocity_solver_evaluation import write_velocity_performance_outputs
+from cellfatebench.velocity_calibration import write_velocity_calibration_outputs
 
 
 VELOCITY_DATASET_SUMMARY_PATH = Path("results/tables/velocity_dataset_summary.csv")
@@ -61,6 +62,7 @@ def run_v2_pipeline() -> dict[str, Any]:
         oracle_output_path=VELOCITY_ORACLE_OUTPUTS_PATH,
     )
     outputs["velocity_solver_evaluation"] = write_velocity_performance_outputs()
+    outputs["velocity_calibration"] = write_velocity_calibration_outputs()
 
     return outputs
 
@@ -77,6 +79,9 @@ def validate_v2_expected_outputs() -> dict[str, bool]:
         Path("results/tables/velocity_task_performance_summary.csv"),
         Path("results/figures/velocity_solver_score_by_profile.png"),
         Path("results/figures/velocity_task_pass_rate.png"),
+        Path("benchmark_tasks/calibration_logs/empirical_velocity_calibration_log.json"),
+        Path("results/tables/velocity_task_difficulty_rebalanced.csv"),
+        Path("results/figures/velocity_task_difficulty_rebalance.png"),
     ]
 
     return {str(path): path.exists() for path in expected_paths}

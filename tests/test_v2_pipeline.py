@@ -12,6 +12,7 @@ def test_run_v2_pipeline_produces_expected_sections() -> None:
         "velocity_dataset",
         "velocity_tasks",
         "velocity_solver_evaluation",
+        "velocity_calibration",
     }
 
     assert set(outputs) == expected_sections
