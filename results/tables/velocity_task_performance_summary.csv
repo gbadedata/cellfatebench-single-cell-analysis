@@ -1,0 +1,7 @@
+task_id,mean_score,pass_rate,mean_overclaim_penalty
+velocity_contradiction_detection_003,0.625,0.5,0.038
+velocity_latent_time_ordering_004,0.625,0.5,0.038
+velocity_low_confidence_failure_mode_005,0.662,0.5,0.038
+velocity_marker_velocity_alignment_006,0.448,0.0,0.038
+velocity_root_direction_inference_001,0.688,0.5,0.038
+velocity_terminal_fate_support_002,0.762,0.5,0.038
