@@ -1,16 +1,16 @@
 dataset:
-name: scvelo_pancreas
-source: scvelo.datasets.pancreas
-purpose: public RNA velocity extension for CellFateBench v2
-commit_raw_data: false
-required_layers:
-- spliced
-- unspliced
-recommended_annotation_columns:
-- clusters
-- celltype
-- cell_type
-- annotation
-outputs:
-dataset_summary: results/tables/velocity_dataset_summary.csv
-layer_summary: results/tables/velocity_layer_summary.csv
+  name: scvelo_pancreas
+  source: scvelo.datasets.pancreas
+  purpose: public RNA velocity extension for CellFateBench v2
+  commit_raw_data: false
+  required_layers:
+    - spliced
+    - unspliced
+  recommended_annotation_columns:
+    - clusters
+    - celltype
+    - cell_type
+    - annotation
+  outputs:
+    dataset_summary: results/tables/velocity_dataset_summary.csv
+    layer_summary: results/tables/velocity_layer_summary.csv
