@@ -1,0 +1,7 @@
+task_id,task_type,declared_difficulty,recommended_difficulty,recommended_action,mean_score,pass_rate,mean_overclaim_penalty
+velocity_contradiction_detection_003,velocity_contradiction_detection,hard,medium,rebalance_from_hard_to_medium,0.625,0.5,0.038
+velocity_latent_time_ordering_004,latent_time_ordering_reasoning,hard,medium,rebalance_from_hard_to_medium,0.625,0.5,0.038
+velocity_low_confidence_failure_mode_005,uncertainty_and_failure_mode_detection,hard,medium,rebalance_from_hard_to_medium,0.662,0.5,0.038
+velocity_marker_velocity_alignment_006,marker_velocity_alignment_reasoning,hard,hard,keep,0.448,0.0,0.038
+velocity_root_direction_inference_001,velocity_supported_root_direction_inference,medium,medium,keep,0.688,0.5,0.038
+velocity_terminal_fate_support_002,terminal_fate_support_from_velocity_context,medium,medium,keep,0.762,0.5,0.038

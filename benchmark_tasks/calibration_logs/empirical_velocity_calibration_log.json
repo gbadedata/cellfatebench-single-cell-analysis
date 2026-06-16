@@ -1,0 +1,82 @@
+{
+  "calibration_type": "empirical_velocity_solver_profile_calibration",
+  "empirical_frontier_model_calibration_claimed": false,
+  "calibration_basis": "Calibration is based on local sample solver profiles: oracle, strong, overclaiming, and weak solvers. It is not a claim of frontier-model calibration.",
+  "total_tasks_reviewed": 6,
+  "difficulty_recommendation_counts": {
+    "hard": 1,
+    "medium": 5
+  },
+  "recommended_action_counts": {
+    "keep": 3,
+    "rebalance_from_hard_to_medium": 3
+  },
+  "task_reviews": [
+    {
+      "task_id": "velocity_contradiction_detection_003",
+      "task_type": "velocity_contradiction_detection",
+      "declared_difficulty": "hard",
+      "recommended_difficulty": "medium",
+      "recommended_action": "rebalance_from_hard_to_medium",
+      "mean_score": 0.625,
+      "pass_rate": 0.5,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears appropriately challenging under the current sample solver profiles."
+    },
+    {
+      "task_id": "velocity_latent_time_ordering_004",
+      "task_type": "latent_time_ordering_reasoning",
+      "declared_difficulty": "hard",
+      "recommended_difficulty": "medium",
+      "recommended_action": "rebalance_from_hard_to_medium",
+      "mean_score": 0.625,
+      "pass_rate": 0.5,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears appropriately challenging under the current sample solver profiles."
+    },
+    {
+      "task_id": "velocity_low_confidence_failure_mode_005",
+      "task_type": "uncertainty_and_failure_mode_detection",
+      "declared_difficulty": "hard",
+      "recommended_difficulty": "medium",
+      "recommended_action": "rebalance_from_hard_to_medium",
+      "mean_score": 0.662,
+      "pass_rate": 0.5,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears appropriately challenging under the current sample solver profiles."
+    },
+    {
+      "task_id": "velocity_marker_velocity_alignment_006",
+      "task_type": "marker_velocity_alignment_reasoning",
+      "declared_difficulty": "hard",
+      "recommended_difficulty": "hard",
+      "recommended_action": "keep",
+      "mean_score": 0.448,
+      "pass_rate": 0.0,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears challenging and should be reviewed for clarity before increasing difficulty."
+    },
+    {
+      "task_id": "velocity_root_direction_inference_001",
+      "task_type": "velocity_supported_root_direction_inference",
+      "declared_difficulty": "medium",
+      "recommended_difficulty": "medium",
+      "recommended_action": "keep",
+      "mean_score": 0.688,
+      "pass_rate": 0.5,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears appropriately challenging under the current sample solver profiles."
+    },
+    {
+      "task_id": "velocity_terminal_fate_support_002",
+      "task_type": "terminal_fate_support_from_velocity_context",
+      "declared_difficulty": "medium",
+      "recommended_difficulty": "medium",
+      "recommended_action": "keep",
+      "mean_score": 0.762,
+      "pass_rate": 0.5,
+      "mean_overclaim_penalty": 0.038,
+      "interpretation": "Task appears appropriately challenging under the current sample solver profiles."
+    }
+  ]
+}
