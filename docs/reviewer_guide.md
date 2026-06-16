@@ -2,7 +2,7 @@
 
 ## Project
 
-CellFateBench: A Single-Cell Benchmark for Trajectory, Spatial, and Topological Analysis
+CellFateBench: Single-Cell Genomics Benchmark for Scientific Reasoning
 
 Repository:
 
@@ -10,9 +10,25 @@ https://github.com/gbadedata/cellfatebench-single-cell-analysis
 
 ## Purpose of This Guide
 
-This guide is written for a technical reviewer, hiring panel member, research engineer, bioinformatics lead, or scientific software evaluator who wants to understand what the project does and how to inspect it efficiently.
+This guide is written for a technical reviewer, hiring panel member, research engineer, bioinformatics lead, scientific software evaluator, or computational biology reviewer who wants to inspect CellFateBench efficiently.
 
-CellFateBench is a benchmark-design project. It is not just a single-cell analysis script. It builds a small but complete evaluation framework around controlled single-cell genomics tasks.
+CellFateBench is not just a single-cell analysis script. It is a benchmark-design project that turns single-cell genomics workflows into structured evaluation assets.
+
+The project includes:
+
+* controlled synthetic single-cell data with known hidden truth;
+* public RNA velocity dataset summaries;
+* public benchmark tasks;
+* hidden answer keys;
+* oracle outputs;
+* scoring logic;
+* solver evaluation;
+* calibration logs;
+* difficulty rebalancing;
+* reproducible pipelines;
+* Docker validation;
+* GitHub Actions CI;
+* reviewer-focused documentation.
 
 ## What This Project Demonstrates
 
@@ -20,15 +36,20 @@ CellFateBench demonstrates the ability to:
 
 * design original benchmark tasks grounded in single-cell genomics;
 * generate controlled synthetic data with known hidden truth;
-* create public tasks and hidden answer keys;
+* handle a public RNA velocity dataset responsibly;
+* separate public prompts from hidden answer keys;
 * write oracle outputs with scientific rationale;
 * build validators and scoring logic;
 * design partial-credit evaluation;
+* penalise unsupported overclaiming;
 * document task difficulty and likely failure modes;
+* perform empirical sample-solver calibration;
+* rebalance task difficulty using solver-performance evidence;
 * use topology-aware analysis with GUDHI;
-* orchestrate a reproducible full pipeline;
+* orchestrate reproducible v1 and v2 pipelines;
 * run tests locally and in CI;
-* validate reproducibility with Docker.
+* validate reproducibility with Docker;
+* document evidence and limitations honestly.
 
 ## What the Project Is Not
 
@@ -38,106 +59,136 @@ This project is not:
 * a regulated biomedical reporting system;
 * a replacement for experimental validation;
 * a large-scale biological atlas;
-* a claim of empirical frontier-model calibration.
+* a claim of empirical frontier-model calibration;
+* a full scVelo velocity graph analysis pipeline;
+* a production laboratory decision system.
 
-The current calibration is a design-stage calibration review. It documents expected difficulty and failure modes but does not claim that tasks have already been benchmarked against frontier models.
+The v2 empirical calibration is based on local sample solver profiles. It does not claim to benchmark frontier models.
 
 ## Recommended Review Path
 
 A reviewer can inspect the project in the following order.
 
-### 1. Start With the README
+### 1. Start with the README
 
 File:
 
 * `README.md`
 
-The README gives the high-level summary, architecture, task families, outputs, testing, Docker, and CI information.
+The README gives the high-level summary, v1 and v2 architecture, data strategy, task families, outputs, testing, Docker, CI, and limitations.
 
-### 2. Inspect the Methods
+### 2. Inspect the methods
 
 File:
 
 * `docs/methods.md`
 
-This explains the dataset design, task design, scoring, calibration, reproducibility, and limitations.
+This explains dataset design, task design, public and hidden answer separation, scoring, calibration, reproducibility, and scope.
 
-### 3. Inspect the Evidence Map
+### 3. Inspect the evidence map
 
 File:
 
 * `docs/evidence_map.md`
 
-This maps project claims to specific files and outputs.
+This maps project claims to specific files, tests, generated outputs, and CI evidence.
 
-### 4. Inspect the Public Benchmark Tasks
+### 4. Inspect public benchmark tasks
 
 Files:
 
 * `benchmark_tasks/public/trajectory_pseudotime_tasks.json`
 * `benchmark_tasks/public/spatial_pattern_tasks.json`
 * `benchmark_tasks/public/topological_persistence_tasks.json`
+* `benchmark_tasks/public/velocity_reasoning_tasks.json`
 
-These show the actual public benchmark problems.
+These show the visible benchmark prompts and evidence provided to a solver.
 
-### 5. Inspect the Hidden Answer Keys
+### 5. Inspect hidden answer keys
 
 Files:
 
 * `benchmark_tasks/hidden/trajectory_pseudotime_answers.json`
 * `benchmark_tasks/hidden/spatial_pattern_answers.json`
 * `benchmark_tasks/hidden/topological_persistence_answers.json`
+* `benchmark_tasks/hidden/velocity_reasoning_answers.json`
 
-These contain the expected answers and scoring-relevant evidence terms.
+These contain expected answers and scoring-relevant evidence fields.
 
-### 6. Inspect the Oracle Outputs
+### 6. Inspect oracle outputs
 
 Files:
 
 * `benchmark_tasks/oracle_outputs/trajectory_pseudotime_oracle_outputs.json`
 * `benchmark_tasks/oracle_outputs/spatial_pattern_oracle_outputs.json`
 * `benchmark_tasks/oracle_outputs/topological_persistence_oracle_outputs.json`
+* `benchmark_tasks/oracle_outputs/velocity_reasoning_oracle_outputs.json`
 
-These show what strong reference-style answers look like.
+These show reference-style answers with conclusions, confidence levels, rationale, and supporting evidence.
 
-### 7. Run the Tests
+### 7. Inspect generated result outputs
+
+Useful review outputs include:
+
+* `results/tables/benchmark_task_summary.csv`
+* `results/tables/topology_summary.json`
+* `results/tables/velocity_dataset_summary.csv`
+* `results/tables/velocity_layer_summary.csv`
+* `results/tables/velocity_solver_performance_summary.csv`
+* `results/tables/velocity_task_performance_summary.csv`
+* `results/tables/velocity_task_difficulty_rebalanced.csv`
+* `results/reports/sample_solver_score_report.json`
+
+Useful figures include:
+
+* `results/figures/synthetic_spatial_layout.png`
+* `results/figures/pseudotime_by_branch.png`
+* `results/figures/task_family_counts.png`
+* `results/figures/sample_solver_scores.png`
+* `results/figures/velocity_solver_score_by_profile.png`
+* `results/figures/velocity_task_pass_rate.png`
+* `results/figures/velocity_task_difficulty_rebalance.png`
+
+### 8. Run the tests
 
 Command:
 
-```
-make test
-```
+`make test`
 
 Expected result:
 
-```
-27 passed
-```
+`57 passed`
 
-### 8. Run the Full Pipeline
+The public scVelo pancreas dataset may emit AnnData old-format warnings. These warnings come from upstream H5AD metadata conventions and do not indicate failure of CellFateBench logic.
+
+### 9. Run the v1 pipeline
 
 Command:
 
-```
-make pipeline
-```
+`make pipeline`
 
 Expected result:
 
-```
-CellFateBench full pipeline completed.
-All expected outputs are present.
-```
+`CellFateBench full pipeline completed. All expected outputs are present.`
 
-### 9. Run Docker Validation
+### 10. Run the v2 pipeline
+
+Command:
+
+`make pipeline-v2`
+
+Expected result:
+
+`CellFateBench v2 public RNA velocity pipeline completed. All expected v2 outputs are present.`
+
+### 11. Run Docker validation
 
 Commands:
 
-```
-docker build -t cellfatebench:latest .
-docker run --rm cellfatebench:latest make test
-docker run --rm cellfatebench:latest make pipeline
-```
+* `docker build -t cellfatebench:latest .`
+* `docker run --rm cellfatebench:latest make test`
+* `docker run --rm cellfatebench:latest make pipeline`
+* `docker run --rm cellfatebench:latest make pipeline-v2`
 
 These commands validate that the benchmark can run in a clean container environment.
 
@@ -156,11 +207,12 @@ Key folders:
 * `results/tables/`: generated summary tables
 * `results/figures/`: generated visual outputs
 * `results/reports/`: generated scoring reports
+* `sample_solver_answers/`: sample solver answer files and velocity solver profiles
 * `docs/`: project documentation
 
 ## Key Source Files
 
-### Synthetic Dataset Generation
+### Synthetic dataset generation
 
 File:
 
@@ -171,7 +223,7 @@ Purpose:
 * creates controlled single-cell scenarios with known hidden truth;
 * generates metadata, expression matrix, gene metadata, and hidden truth JSON.
 
-### Benchmark Task Generation
+### v1 benchmark task generation
 
 File:
 
@@ -179,13 +231,9 @@ File:
 
 Purpose:
 
-* generates public tasks, hidden answers, and oracle outputs for:
+* generates public tasks, hidden answers, and oracle outputs for trajectory, spatial, and topological reasoning.
 
-  * trajectory reasoning;
-  * spatial reasoning;
-  * topological reasoning.
-
-### Topology Summary
+### Topology summary
 
 File:
 
@@ -193,7 +241,7 @@ File:
 
 Purpose:
 
-* uses GUDHI to compute topology-aware persistence summaries;
+* uses GUDHI to compute lightweight topology-aware persistence summaries;
 * creates trajectory and spatial topology summaries.
 
 ### Validators
@@ -207,7 +255,7 @@ Purpose:
 * provides deterministic text and field-matching utilities;
 * supports scoring logic.
 
-### Scoring
+### v1 scoring
 
 File:
 
@@ -219,7 +267,7 @@ Purpose:
 * supports partial credit;
 * writes a score report.
 
-### Calibration
+### v1 calibration
 
 File:
 
@@ -230,7 +278,49 @@ Purpose:
 * generates design-stage calibration logs;
 * documents difficulty, reasoning requirements, and likely failure modes.
 
-### Pipeline
+### Public RNA velocity dataset validation
+
+File:
+
+* `src/cellfatebench/public_velocity.py`
+
+Purpose:
+
+* validates public RNA velocity dataset shape, required layers, annotation columns, and layer summaries.
+
+### v2 velocity task generation
+
+File:
+
+* `src/cellfatebench/velocity_tasks.py`
+
+Purpose:
+
+* generates public RNA velocity reasoning tasks, hidden answers, and oracle outputs.
+
+### v2 velocity solver evaluation
+
+File:
+
+* `src/cellfatebench/velocity_solver_evaluation.py`
+
+Purpose:
+
+* evaluates sample velocity solver profiles;
+* scores correctness, evidence support, uncertainty discipline, and overclaiming.
+
+### v2 calibration
+
+File:
+
+* `src/cellfatebench/velocity_calibration.py`
+
+Purpose:
+
+* performs empirical sample-solver calibration;
+* produces difficulty rebalancing outputs.
+
+### v1 pipeline
 
 File:
 
@@ -238,7 +328,17 @@ File:
 
 Purpose:
 
-* orchestrates the full benchmark generation pipeline.
+* orchestrates the full v1 benchmark generation pipeline.
+
+### v2 pipeline
+
+File:
+
+* `src/cellfatebench/v2_pipeline.py`
+
+Purpose:
+
+* orchestrates the full v2 public RNA velocity extension pipeline.
 
 ### Visualization
 
@@ -252,109 +352,119 @@ Purpose:
 
 ## Benchmark Task Families
 
-### Trajectory and Pseudotime Reasoning
+### Trajectory and pseudotime reasoning
 
 These tasks test whether a solver can infer:
 
-* root/progenitor state;
+* root or progenitor state;
 * terminal states;
-* pseudotime ordering;
-* transition-state position;
+* transition placement;
+* early-to-late pseudotime ordering;
 * masked terminal identity.
 
-### Spatial Pattern Reasoning
+### Spatial pattern reasoning
 
 These tasks test whether a solver can infer:
 
-* spatially variable gene groups;
-* spatial-domain marker signals;
+* spatially variable genes;
+* spatial-domain marker enrichment;
 * masked spatial domains;
-* false-positive spatial claims.
+* unsupported spatial claims.
 
-### Topological Persistence Reasoning
+### Topological persistence reasoning
 
 These tasks test whether a solver can infer:
 
-* bifurcating trajectory structure;
+* bifurcating structure;
 * major branch count;
-* spatial ring signal interpretation;
+* ring-signal meaning;
 * false-positive loop claims;
-* distinction between spatial topology and trajectory topology.
+* difference between spatial topology and cell-fate topology.
 
-## Why Controlled Synthetic Data Was Used
+### RNA velocity reasoning
 
-The project uses controlled synthetic data because benchmark evaluation requires known hidden truth.
+These tasks test whether a solver can reason about:
 
-For a benchmark, it is not enough to ask an interesting question. The benchmark must know the answer.
+* upstream cell-state evidence;
+* terminal endocrine fate support;
+* contradiction detection;
+* latent-time-style ordering;
+* low-confidence velocity interpretation;
+* marker and velocity evidence alignment.
 
-Controlled synthetic data allows the project to define:
+## How to Assess Project Quality
 
-* true branch labels;
-* true terminal states;
-* true pseudotime;
-* true spatial domains;
-* true spatially variable gene groups;
-* true topology design.
+A reviewer should look for the following quality signals.
 
-This makes deterministic validation possible.
+### Benchmark design quality
 
-## How to Interpret the Calibration Log
+* Are public tasks separated from hidden answers?
+* Are oracle outputs available for inspection?
+* Are task prompts structured and reproducible?
+* Are scoring fields explicit?
+* Are unsupported claims penalised?
 
-File:
+### Scientific reasoning quality
 
-* `benchmark_tasks/calibration_logs/design_stage_calibration_log.json`
+* Do tasks require evidence synthesis rather than label recall?
+* Are uncertainty and overclaiming handled?
+* Are topology and RNA velocity claims scoped carefully?
+* Are public data annotations treated as reference context rather than absolute truth?
 
-The calibration log should be read as a design-stage review. It documents:
+### Software engineering quality
 
-* what each task is testing;
-* why the task has its declared difficulty;
-* where solvers are likely to fail;
-* what future calibration should test.
+* Is the project organised as a package?
+* Are scripts separated from source modules?
+* Are tests present and passing?
+* Are outputs reproducible through Makefile commands?
+* Does Docker run the same validation?
+* Does GitHub Actions validate the project remotely?
 
-It is not an empirical model-calibration result.
+### Documentation quality
+
+* Does the README explain the project clearly?
+* Does the methods document explain the scientific rationale?
+* Does the evidence map link claims to files?
+* Does the limitations document avoid overclaiming?
+
+## Expected Local Validation
+
+A strong local validation result should include:
+
+* `make test` passing;
+* `make pipeline` passing;
+* `make pipeline-v2` passing;
+* no unexpected untracked files;
+* generated output files present;
+* CI passing on GitHub.
 
 ## Main Strengths
 
 The project is strong because it combines:
 
 * single-cell genomics task design;
-* benchmark engineering;
-* hidden-answer separation;
-* oracle outputs;
-* scoring and validation;
-* calibration review;
-* topology-aware analysis;
+* benchmark-style public and hidden file separation;
+* synthetic hidden truth for deterministic scoring;
+* public RNA velocity data for biological realism;
+* GUDHI-based topology summaries;
+* explicit scoring and calibration;
+* difficulty rebalancing;
 * Docker reproducibility;
 * CI validation;
-* professional documentation.
+* reviewer-focused documentation.
 
-## Main Limitations
+## Main Limitations to Note
 
-The project also has clear limitations:
+The project is honest about limitations:
 
-* the first version uses synthetic data;
-* the calibration is design-stage, not empirical frontier-model calibration;
-* the benchmark does not yet include scVelo or Squidpy workflows;
-* the dataset is intentionally compact to keep CI and Docker reproducibility practical;
-* the project is not intended for clinical or diagnostic use.
+* synthetic data cannot capture the full complexity of real single-cell biology;
+* public dataset annotations are reference context, not absolute truth;
+* v2 does not yet compute a full scVelo velocity graph;
+* v2 calibration is based on local sample solver profiles, not frontier-model runs;
+* the project is not clinical or diagnostic.
 
-## Suggested Future Improvements
+## Suggested Review Decision
 
-Future versions could add:
+A reviewer should treat CellFateBench as a serious portfolio-grade scientific software project that demonstrates benchmark construction, computational biology reasoning, reproducibility, and documentation discipline.
 
-* empirical calibration against multiple AI systems;
-* human expert calibration;
-* real public single-cell datasets;
-* scVelo-style RNA velocity tasks;
-* Squidpy-style spatial-neighbourhood tasks;
-* multi-omic integration tasks;
-* richer topological summaries and persistence diagrams;
-* task difficulty rebalancing based on solver performance.
-
-## Reviewer Conclusion
-
-CellFateBench should be reviewed as a scientific software and benchmark-design project.
-
-Its strongest contribution is not simply that it runs a single-cell workflow. Its strongest contribution is that it converts controlled single-cell analysis scenarios into public benchmark tasks, hidden answers, oracle outputs, validators, scoring reports, calibration logs, and reproducible evidence.
-
-This makes the project closely aligned with computational scientific software, bioinformatics benchmark design, and single-cell genomics reasoning evaluation.
+It should not be reviewed as a biological discovery paper or a clinical workflow. Its value is in the benchmark-engineering framework, reproducible implementation, and evidence-aware evaluation design.
